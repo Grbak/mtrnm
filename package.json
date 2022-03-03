@@ -1,0 +1,22 @@
+{
+  "name": "mtrnm",
+  "version": "1.0.0",
+  "description": "This is my lovely pet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grbak/mtrnm.git"
+  },
+  "keywords": [
+    "metronome"
+  ],
+  "author": "Vladislav Dybok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grbak/mtrnm/issues"
+  },
+  "homepage": "https://github.com/Grbak/mtrnm#readme"
+}
