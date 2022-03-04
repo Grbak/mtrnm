@@ -2,6 +2,7 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    context: path.resolve(__dirname, './src'),
     mode: 'development',
     entry: './index.jsx',
     output: {
@@ -9,7 +10,11 @@ module.exports = {
         path: path.resolve(__dirname, './dist')
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
+        alias: {
+            global: './global',
+            local: './local'
+        }
     },
     plugins: [
         new HTMLWebpackPlugin({
