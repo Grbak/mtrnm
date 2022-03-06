@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// styles
+import  './index.css';
+
 // components
-import { App } from 'local/App';
+import { Application } from 'local/Application';
 
 const root = document.getElementById('root');
-ReactDOM.render(<App />, root);
+ReactDOM.render(<Application />, root);

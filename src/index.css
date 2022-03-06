@@ -1,0 +1,18 @@
+
+@font-faсe {
+    font-family: 'Roboto';
+    src: url('/assets/Roboto-Regular.ttf');
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    color: white;
+    --color-level-1: #7BB0D4;
+    --color-level-2: #8AC5ED;
+    --color-level-3: #94D5FF;
+    --color-black-1: #405B6E;
+    --color-black-2: #6895B3;
+    --color-primary-high: #A1783D;
+    --color-primary-low: #EDC48A;
+}
