@@ -1,8 +1,11 @@
 import React from 'react';
 
+// styles
+import './App.css';
+
 export const App = () => {
     return (
-        <div style={{ background: 'red', height: '100%' }}>
+        <div className="App">
             There will be my metronome
         </div>
     )
