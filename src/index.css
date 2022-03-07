@@ -1,4 +1,7 @@
 
+@import '../node_modules/react-grid-layout/css/styles.css';
+@import '../node_modules/react-resizable/css/styles.css';
+
 @font-faсe {
     font-family: 'Roboto';
     src: url('/assets/Roboto-Regular.ttf');
@@ -18,4 +21,9 @@ body {
     --round-s: 8px;
     --round-m: 12px;
     --round-l: 16px;
+    --space-xs: 8px;
+    --space-s: 12px;
+    --space-m: 16px;
+    --space-l: 24px;
+    --space-xl: 32px;
 }

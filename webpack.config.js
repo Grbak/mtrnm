@@ -16,8 +16,8 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
-            global: './global',
-            local: './local'
+            global: path.resolve(__dirname, './src/global'),
+            local: path.resolve(__dirname, './src/local')
         }
     },
     plugins: [

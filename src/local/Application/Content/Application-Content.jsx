@@ -5,12 +5,10 @@ import { Responsive as ResponsiveGridLayout, WidthProvider } from 'react-grid-la
 import { cnApplicationContent } from '../Application.const';
 
 // components
-import { Widget } from './Widget/Widget';
+import { Widget } from 'global/Widget';
 
 // styles
 import './Application-Content.css'
-import '../../../../node_modules/react-grid-layout/css/styles.css';
-import '../../../../node_modules/react-resizable/css/styles.css';
 
 const GridLayout = WidthProvider(ResponsiveGridLayout);
 
@@ -37,18 +35,18 @@ export const ApplicationContent = () => {
                 margin={[16, 16]}
             >
                 <div key="a">
-                    <Widget>
-                        a
+                    <Widget title="Metronome">
+                        
                     </Widget>
                 </div>
                 <div key="b">
-                    <Widget>
-                        b
+                    <Widget title="Songbook">
+                        
                     </Widget>
                 </div>
                 <div key="c">
-                    <Widget>
-                        c
+                    <Widget title="Statistics">
+                        
                     </Widget>
                 </div>
             </GridLayout>
