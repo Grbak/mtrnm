@@ -1,11 +1,12 @@
-
 .Application {
-   display: flex;
-   flex-direction: column;
-   min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .Application-Footer {
     background: var(--color-level-1);
+    background: var(--color-test-2);
+
     height: 32px;
 }

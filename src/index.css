@@ -1,4 +1,3 @@
-
 @import '../node_modules/react-grid-layout/css/styles.css';
 @import '../node_modules/react-resizable/css/styles.css';
 
@@ -10,14 +9,14 @@
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
-    color: white;
-    --color-level-1: #7BB0D4;
-    --color-level-2: #8AC5ED;
-    --color-level-3: #94D5FF;
-    --color-black-1: #405B6E;
-    --color-black-2: #6895B3;
-    --color-primary-high: #A1783D;
-    --color-primary-low: #EDC48A;
+    color: black;
+    --color-level-1: #7bb0d4;
+    --color-level-2: #8ac5ed;
+    --color-level-3: #94d5ff;
+    --color-black-1: #405b6e;
+    --color-black-2: #6895b3;
+    --color-primary-high: #a1783d;
+    --color-primary-low: #edc48a;
     --round-s: 8px;
     --round-m: 12px;
     --round-l: 16px;
@@ -26,4 +25,7 @@ body {
     --space-m: 16px;
     --space-l: 24px;
     --space-xl: 32px;
+    --color-test-1: linear-gradient(#f3f3f2, #f3f3f2);
+    --color-test-2: #fff;
+    --color-test-3: #f2f2f2;
 }

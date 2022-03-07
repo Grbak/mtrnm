@@ -1,5 +1,5 @@
-
 .Application-Content {
     flex: auto;
     background: var(--color-level-2);
+    background: var(--color-test-1);
 }

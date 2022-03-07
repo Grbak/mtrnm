@@ -1,13 +1,19 @@
-
 .Widget {
     height: 100%;
     background: var(--color-level-3);
+    background: var(--color-test-2);
     border-radius: var(--round-l);
 }
 
 .Widget-Header {
     padding: var(--space-m);
     display: flex;
+    align-items: center;
+    height: 32px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    cursor: default;
 }
 
 .Widget-HeaderAddon {

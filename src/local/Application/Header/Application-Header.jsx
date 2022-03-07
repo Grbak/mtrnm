@@ -20,20 +20,26 @@ export const ApplicationHeader = () => {
         <div className={cnApplicationHeader()}>
             mtrnm
             <div className={cnApplicationHeaderAddon()}>
-                <div ref={langAnchor} onClick={() => setShowPopup(true)}>
+                <Button
+                    view="clear"
+                    size="m"
+                    controlRef={langAnchor}
+                    onClick={() => setShowPopup(true)}
+                >
                     Language
-                </div>
+                </Button>
                 <Popup
                     visible={showPopup}
                     onClose={() => setShowPopup(false)}
                     view="default"
                     target="anchor"
+                    // direction="bottom-center"
                     anchor={langAnchor}
                 >
                     <div>Ru</div>
                     <div>Eng</div>
                 </Popup>
-                <Button view="pseudo" size="m">
+                <Button view="default" size="m">
                     Log out
                 </Button>
             </div>

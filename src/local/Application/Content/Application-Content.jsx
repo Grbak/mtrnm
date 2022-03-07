@@ -20,6 +20,7 @@ export const ApplicationContent = () => {
         <div className={cnApplicationContent()}>
             <GridLayout
                 isResizable={false}
+                isDraggable={false}
                 isBounded
                 breakpoints={{
                     lg: 1200,
@@ -83,7 +84,7 @@ export const ApplicationContent = () => {
                         }
                     ]
                 }}
-                margin={[16, 16]}
+                margin={[24, 24]}
             >
                 <div key="a">
                     <Widget title="Metronome" />

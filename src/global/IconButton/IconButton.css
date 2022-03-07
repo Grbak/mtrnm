@@ -1,0 +1,24 @@
+.IconButton {
+    /* background: var(--color-test-3); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--space-s);
+    transition: transform 0.3 ease-out;
+    transform: scale(1);
+    cursor: pointer;
+}
+
+.IconButton:hover {
+    background: var(--color-test-3);
+}
+
+.IconButton_pressed {
+    transform: scale(0.9);
+    transform-origin: center;
+}
+
+.IconButton_size_m {
+    width: 40px;
+    height: 40px;
+}
