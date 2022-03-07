@@ -1,0 +1,14 @@
+
+.Application-Header {
+    display: flex;
+    align-items: center;
+    background: var(--color-level-1);
+    padding: var(--space-s) var(--space-m);
+}
+
+.Application-HeaderAddon {
+    margin-left: auto;
+    display: inherit;
+    align-items: inherit;
+    gap: var(--space-s);
+}

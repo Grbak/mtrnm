@@ -25,6 +25,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@bem-react/classname": "^1.5.12",
+    "@yandex/ui": "^3.23.2",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.7.0",
     "react": "^17.0.2",
