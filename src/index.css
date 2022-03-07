@@ -15,4 +15,7 @@ body {
     --color-black-2: #6895B3;
     --color-primary-high: #A1783D;
     --color-primary-low: #EDC48A;
+    --round-s: 8px;
+    --round-m: 12px;
+    --round-l: 16px;
 }

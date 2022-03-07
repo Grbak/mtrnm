@@ -1,5 +1,8 @@
 import React from 'react';
 
+// components
+import { ApplicationContent as Content } from './Content/Application-Content';
+
 // const
 import { cnApplication, cnApplicationHeader, cnApplicationContent, cnApplicationFooter } from './Application.const';
 
@@ -12,9 +15,7 @@ export const Application = () => {
             <div className={cnApplicationHeader()}>
                 Header
             </div>
-            <div className={cnApplicationContent()}>
-                Content (There will be my metronome)
-            </div>
+            <Content />
             <div className={cnApplicationFooter()}>
                 Footer
             </div>
