@@ -7,15 +7,15 @@ import { cnWidget, cnWidgetHeader, cnWidgetHeaderAddon } from './Widget.const';
 import './Widget.css';
 
 export const Widget = ({ children, title, className }) => {
-    return (
-        <div className={cnWidget(null, [className])}>
-            <div className={cnWidgetHeader()}>
-                {title}
-                <div className={cnWidgetHeaderAddon()}>
-                    Addon    
-                </div>
-            </div>
-            {children}
-        </div>
-    )
-}
+	return (
+		<div className={cnWidget(null, [className])}>
+			<div className={cnWidgetHeader()}>
+				{title}
+				<div className={cnWidgetHeaderAddon()}>
+                    Addon
+				</div>
+			</div>
+			{children}
+		</div>
+	);
+};

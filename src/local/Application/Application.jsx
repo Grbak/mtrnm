@@ -11,13 +11,13 @@ import { cnApplication, cnApplicationFooter } from './Application.const';
 import './Application.css';
 
 export const Application = () => {
-    return (
-        <div className={cnApplication()}>
-            <Header />
-            <Content />
-            <div className={cnApplicationFooter()}>
+	return (
+		<div className={cnApplication()}>
+			<Header />
+			<Content />
+			<div className={cnApplicationFooter()}>
                 Footer
-            </div>
-        </div>
-    )
-}
+			</div>
+		</div>
+	);
+};
