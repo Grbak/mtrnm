@@ -2,9 +2,16 @@ import React from 'react';
 
 // components
 import { IconButton } from 'global/IconButton';
+import { Text } from 'global/Text';
 
 // const
-import { cnWidget, cnWidgetHeader, cnWidgetHeaderAddon } from './Widget.const';
+import {
+    cnWidget,
+    cnWidgetHeader,
+    cnWidgetHeaderAddon,
+    cnWidgetTitle,
+    cnWidgetContent
+} from './Widget.const';
 
 // styles
 import './Widget.css';
@@ -13,7 +20,9 @@ export const Widget = ({ children, title, className }) => {
     return (
         <div className={cnWidget(null, [className])}>
             <div className={cnWidgetHeader()}>
-                {title}
+                <Text className={cnWidgetTitle()} type="h4">
+                    {title}
+                </Text>
                 <div className={cnWidgetHeaderAddon()}>
                     <IconButton>
                         <svg
@@ -31,7 +40,7 @@ export const Widget = ({ children, title, className }) => {
                     </IconButton>
                 </div>
             </div>
-            {children}
+            <div className={cnWidgetContent()}>{children}</div>
         </div>
     );
 };

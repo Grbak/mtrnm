@@ -1,0 +1,16 @@
+.Metronome {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+}
+
+.Metronome-Radio {
+    width: 100%;
+}
+
+.xo {
+    height: 32px;
+    flex: 1;
+    background: var(--color-test-1);
+    border-radius: var(--round-s);
+}

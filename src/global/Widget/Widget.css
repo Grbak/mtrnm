@@ -19,3 +19,7 @@
 .Widget-HeaderAddon {
     margin-left: auto;
 }
+
+.Widget-Content {
+    padding: 0 var(--space-m) var(--space-m);
+}

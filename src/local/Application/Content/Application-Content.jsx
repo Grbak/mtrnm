@@ -6,6 +6,7 @@ import {
 
 // components
 import { Widget } from 'global/Widget';
+import { Metronome } from 'local/Metronome';
 
 // const
 import { cnApplicationContent } from '../Application.const';
@@ -22,6 +23,7 @@ export const ApplicationContent = () => {
                 isResizable={false}
                 isDraggable={false}
                 isBounded
+                rowHeight={100}
                 breakpoints={{
                     lg: 1200,
                     md: 996,
@@ -65,29 +67,31 @@ export const ApplicationContent = () => {
                             i: 'a',
                             x: 0,
                             y: 0,
-                            w: 2,
+                            w: 4,
                             h: 2
                         },
                         {
                             i: 'b',
                             x: 0,
                             y: 2,
-                            w: 3,
+                            w: 4,
                             h: 2
                         },
                         {
                             i: 'c',
-                            x: 6,
+                            x: 0,
                             y: 6,
-                            w: 1,
-                            h: 4
+                            w: 4,
+                            h: 3
                         }
                     ]
                 }}
                 margin={[24, 24]}
             >
                 <div key="a">
-                    <Widget title="Metronome" />
+                    <Widget title="Metronome">
+                        <Metronome />
+                    </Widget>
                 </div>
                 <div key="b">
                     <Widget title="Songbook" />
