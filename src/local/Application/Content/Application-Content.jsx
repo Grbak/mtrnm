@@ -52,7 +52,7 @@ export const ApplicationContent = () => {
                             x: 0,
                             y: 3,
                             w: 6,
-                            h: 1
+                            h: 2
                         },
                         {
                             i: 'c',
@@ -94,10 +94,10 @@ export const ApplicationContent = () => {
                     </Widget>
                 </div>
                 <div key="b">
-                    <Widget title="Songbook" />
+                    <Widget title="Songbook" isClosed />
                 </div>
                 <div key="c">
-                    <Widget title="Statistics" />
+                    <Widget title="Statistics" isClosed />
                 </div>
             </GridLayout>
         </div>

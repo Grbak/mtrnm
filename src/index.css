@@ -25,7 +25,10 @@ body {
     --space-m: 16px;
     --space-l: 24px;
     --space-xl: 32px;
-    --color-test-1: linear-gradient(#f3f3f2, #f3f3f2);
+    --color-test-1: #f2f2f2;
     --color-test-2: #fff;
-    --color-test-3: #f2f2f2;
+    --color-test-4: rgb(230, 230, 230);
+    --color-test-5: rgb(219, 219, 219);
+    --color-test-6: #999;
+    --color-test-7: #414656;
 }

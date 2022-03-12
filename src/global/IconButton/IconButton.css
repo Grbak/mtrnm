@@ -1,5 +1,4 @@
 .IconButton {
-    /* background: var(--color-test-3); */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,7 +9,7 @@
 }
 
 .IconButton:hover {
-    background: var(--color-test-3);
+    background: var(--color-test-1);
 }
 
 .IconButton_pressed {

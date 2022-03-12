@@ -1,0 +1,20 @@
+.Plug {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-test-2);
+    border-radius: inherit;
+    color: var(--color-test-5);
+}
+
+.Plug-Title {
+    color: black;
+    margin-top: var(--space-m);
+}
+
+.Plug-Subtitle {
+    color: var(--color-test-6);
+    margin-top: var(--space-xs);
+}
