@@ -2,7 +2,9 @@ import React, { useRef, useState } from 'react';
 
 // yandex-ui
 import { Button } from '@yandex/ui/Button/desktop/bundle';
-import { Popup } from '@yandex/ui/Popup/desktop/bundle';
+
+// components
+import { Popup } from 'global/Popup';
 
 // const
 import {
@@ -31,14 +33,8 @@ export const ApplicationHeader = () => {
                 <Popup
                     visible={showPopup}
                     onClose={() => setShowPopup(false)}
-                    view="default"
-                    target="anchor"
-                    // direction="bottom-center"
                     anchor={langAnchor}
-                >
-                    <div>Ru</div>
-                    <div>Eng</div>
-                </Popup>
+                />
                 <Button view="default" size="m">
                     Log out
                 </Button>

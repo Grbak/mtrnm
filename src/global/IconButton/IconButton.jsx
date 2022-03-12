@@ -6,19 +6,25 @@ import { cnIconButton } from './IconButton.const';
 // styles
 import './IconButton.css';
 
-export const IconButton = ({ className, size = 'm', onClick, children }) => {
+export const IconButton = ({
+    className,
+    size = 'm',
+    onClick,
+    children,
+    innerRef
+}) => {
     const [isPressed, setIsPressed] = useState(false);
     const handleMouseDown = useCallback(() => {
         setIsPressed(true);
     }, []);
 
     const handleClick = useCallback(() => {
+        onClick && onClick();
         setIsPressed(false);
     }, []);
 
     const handleMouseLeave = useCallback(() => {
         isPressed && setIsPressed(false);
-        onClick && onClick();
     }, [isPressed]);
 
     return (
@@ -27,6 +33,7 @@ export const IconButton = ({ className, size = 'm', onClick, children }) => {
             onMouseLeave={handleMouseLeave}
             onMouseDown={handleMouseDown}
             onClick={handleClick}
+            ref={innerRef}
         >
             {children}
         </div>

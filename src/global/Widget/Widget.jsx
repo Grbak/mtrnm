@@ -1,10 +1,11 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 
 // components
 import { IconButton } from 'global/IconButton';
 import { Text } from 'global/Text';
 import { Plug } from 'global/Plug';
+import { Popup } from 'global/Popup';
 
 // const
 import {
@@ -20,6 +21,17 @@ import {
 import './Widget.css';
 
 export const Widget = ({ children, title, className, isClosed }) => {
+    const [showPopup, setShowPopup] = useState(false);
+    const anchor = useRef();
+
+    const handlePopupOpen = useCallback(() => {
+        setShowPopup(true);
+    }, []);
+
+    const handlePopupClose = useCallback(() => {
+        setShowPopup(false);
+    }, []);
+
     return (
         <div className={cnWidget(null, [className])}>
             {isClosed ? (
@@ -35,7 +47,10 @@ export const Widget = ({ children, title, className, isClosed }) => {
                             {title}
                         </Text>
                         <div className={cnWidgetHeaderAddon()}>
-                            <IconButton>
+                            <IconButton
+                                onClick={handlePopupOpen}
+                                innerRef={anchor}
+                            >
                                 <svg
                                     width="4"
                                     height="18"
@@ -49,6 +64,12 @@ export const Widget = ({ children, title, className, isClosed }) => {
                                     />
                                 </svg>
                             </IconButton>
+                            <Popup
+                                visible={showPopup}
+                                onClose={handlePopupClose}
+                                anchor={anchor}
+                                direction="bottom-end"
+                            />
                         </div>
                     </div>
                     <div className={cnWidgetContent()}>{children}</div>
