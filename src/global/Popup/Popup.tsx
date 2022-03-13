@@ -7,24 +7,32 @@ import {
 } from '@yandex/ui/Popup/desktop/bundle';
 import { IPopupTargetAnchorProps } from '@yandex/ui/Popup';
 
+// components
+import { PopupItem as Item, PopupItemProps } from './Item/Popup-Item';
+
 // const
-import { cnPopup, cnPopupItem } from './Popup.const';
+import { cnPopup } from './Popup.const';
 
 // styles
 import './Popup.css';
 
-type PopupPropsPropsPropsProps = Pick<
+type PopupItem = PopupItemProps;
+
+type PopupProps = Pick<
     IPopupProps,
     'visible' | 'onClose' | 'className' | 'direction'
 > &
-    Pick<IPopupTargetAnchorProps, 'anchor'>;
+    Pick<IPopupTargetAnchorProps, 'anchor'> & {
+        items: PopupItem[];
+    };
 
-export const Popup: FC<PopupPropsPropsPropsProps> = ({
+export const Popup: FC<PopupProps> = ({
     visible,
     onClose,
     anchor,
     className,
-    direction
+    direction,
+    items
 }) => {
     return (
         <BasePopup
@@ -38,9 +46,13 @@ export const Popup: FC<PopupPropsPropsPropsProps> = ({
             direction={direction}
             mainOffset={12}
         >
-            <div className={cnPopupItem()}>test</div>
-            <div className={cnPopupItem()}>test</div>
-            <div className={cnPopupItem()}>test</div>
+            {items.map((item: PopupItem) => (
+                <Item
+                    content={item.content}
+                    onClick={item.onClick}
+                    key={`popup-item-${item.content}`}
+                />
+            ))}
         </BasePopup>
     );
 };

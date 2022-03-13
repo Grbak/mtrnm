@@ -32,6 +32,17 @@ export const Widget = ({ children, title, className, isClosed }) => {
         setShowPopup(false);
     }, []);
 
+    const popupItems = [
+        {
+            content: 'Move',
+            onClick: () => console.log('Move')
+        },
+        {
+            content: 'Hide',
+            onClick: () => console.log('Hide')
+        }
+    ];
+
     return (
         <div className={cnWidget(null, [className])}>
             {isClosed ? (
@@ -50,6 +61,7 @@ export const Widget = ({ children, title, className, isClosed }) => {
                             <IconButton
                                 onClick={handlePopupOpen}
                                 innerRef={anchor}
+                                pressed={showPopup}
                             >
                                 <svg
                                     width="4"
@@ -69,6 +81,7 @@ export const Widget = ({ children, title, className, isClosed }) => {
                                 onClose={handlePopupClose}
                                 anchor={anchor}
                                 direction="bottom-end"
+                                items={popupItems}
                             />
                         </div>
                     </div>

@@ -34,6 +34,7 @@ export const ApplicationHeader = () => {
                     visible={showPopup}
                     onClose={() => setShowPopup(false)}
                     anchor={langAnchor}
+                    items={[]}
                 />
                 <Button view="default" size="m">
                     Log out

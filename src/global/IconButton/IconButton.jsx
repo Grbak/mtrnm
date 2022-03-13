@@ -11,7 +11,8 @@ export const IconButton = ({
     size = 'm',
     onClick,
     children,
-    innerRef
+    innerRef,
+    pressed
 }) => {
     const [isPressed, setIsPressed] = useState(false);
     const handleMouseDown = useCallback(() => {
@@ -29,7 +30,9 @@ export const IconButton = ({
 
     return (
         <div
-            className={cnIconButton({ size, pressed: isPressed }, [className])}
+            className={cnIconButton({ size, pressed: isPressed || pressed }, [
+                className
+            ])}
             onMouseLeave={handleMouseLeave}
             onMouseDown={handleMouseDown}
             onClick={handleClick}

@@ -1,0 +1,10 @@
+.Popup-Item {
+    padding: var(--space-xs) var(--space-s);
+    min-width: 100px;
+    border-radius: var(--round-s);
+    cursor: pointer;
+}
+
+.Popup-Item:hover {
+    background: var(--color-test-1);
+}

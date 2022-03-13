@@ -1,12 +1,4 @@
 .Popup {
-    padding: var(--space-m);
+    padding: var(--space-s);
     border-radius: var(--round-s) !important;
-}
-
-.Popup-Item {
-    min-width: 100px;
-}
-
-.Popup-Item:not(:last-child) {
-    margin-bottom: var(--space-m);
 }

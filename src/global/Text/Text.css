@@ -1,7 +1,21 @@
+.Text {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
 .Text_type_h3 {
     font-size: 24px;
 }
 
 .Text_type_h4 {
     font-size: 18px;
+}
+
+.Text_type_body1 {
+    font-size: 16px;
+}
+
+.Text_type_body2 {
+    font-size: 13px;
 }
