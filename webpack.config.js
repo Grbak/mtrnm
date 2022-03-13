@@ -7,43 +7,56 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 console.log(process.env.NODE_ENV);
 
 module.exports = {
-	context: path.resolve(__dirname, './src'),
-	mode: 'development',
-	entry: './index.jsx',
-	output: {
-		filename: 'bundle.js',
-		path: path.resolve(__dirname, './dist')
-	},
-	resolve: {
-		extensions: ['.js', '.jsx'],
-		alias: {
-			global: path.resolve(__dirname, './src/global'),
-			local: path.resolve(__dirname, './src/local')
-		}
-	},
-	plugins: [
-		new HTMLWebpackPlugin({
-			template: './index.html'
-		}),
-		new MiniCssExtractPlugin(),
-		new CleanWebpackPlugin(),
-		new ESLintPlugin()
-	],
-	module: {
-		rules: [
-			{
-				test: /\.jsx/,
-				use: {
-					loader: 'babel-loader',
-					options: {
-						presets: ['@babel/preset-env', '@babel/preset-react']
-					}
-				}
-			},
-			{
-				test: /\.css/,
-				use: [MiniCssExtractPlugin.loader, 'css-loader']
-			}
-		]
-	}
+    context: path.resolve(__dirname, './src'),
+    mode: 'development',
+    entry: './index.jsx',
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, './dist')
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        alias: {
+            global: path.resolve(__dirname, './src/global'),
+            local: path.resolve(__dirname, './src/local')
+        }
+    },
+    plugins: [
+        new HTMLWebpackPlugin({
+            template: './index.html'
+        }),
+        new MiniCssExtractPlugin(),
+        new CleanWebpackPlugin(),
+        new ESLintPlugin()
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.ts?x$/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            '@babel/preset-env',
+                            '@babel/preset-typescript',
+                            '@babel/preset-react'
+                        ]
+                    }
+                }
+            },
+            {
+                test: /\.jsx$/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react']
+                    }
+                }
+            },
+            {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
+            }
+        ]
+    }
 };

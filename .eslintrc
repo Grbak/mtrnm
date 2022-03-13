@@ -1,6 +1,6 @@
 {
-    "parser": "@babel/eslint-parser",
-    "extends": ["airbnb", "prettier"],
+    "parser": "@typescript-eslint/parser",
+    "extends": ["airbnb", "prettier", "plugin:@typescript-eslint/recommended"],
     "parserOptions": {
         "requireConfigFile": false,
         "babelOptions": {
@@ -26,7 +26,9 @@
         "jsx-a11y/no-static-element-interactions": 0,
         "jsx-a11y/click-events-have-key-events": 0,
         "no-unused-expressions": 0,
+        "react/jsx-filename-extension": 0,
+        "import/extensions": 0,
         "prettier/prettier": "error"
     },
-    "plugins": ["prettier"]
+    "plugins": ["@typescript-eslint", "prettier"]
 }
