@@ -4,6 +4,11 @@
     -webkit-user-select: none;
 }
 
+.Text_type_h2 {
+    cursor: default;
+    font-size: 48px;
+}
+
 .Text_type_h3 {
     font-size: 24px;
 }

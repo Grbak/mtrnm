@@ -28,6 +28,7 @@
         "no-unused-expressions": 0,
         "react/jsx-filename-extension": 0,
         "import/extensions": 0,
+        "no-shadow": 0,
         "prettier/prettier": "error"
     },
     "plugins": ["@typescript-eslint", "prettier"]

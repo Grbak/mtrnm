@@ -44,8 +44,8 @@ export const ApplicationContent = () => {
                             i: 'a',
                             x: 0,
                             y: 0,
-                            w: 6,
-                            h: 2
+                            w: 4,
+                            h: 3
                         },
                         {
                             i: 'b',
@@ -68,7 +68,7 @@ export const ApplicationContent = () => {
                             x: 0,
                             y: 0,
                             w: 4,
-                            h: 2
+                            h: 3
                         },
                         {
                             i: 'b',

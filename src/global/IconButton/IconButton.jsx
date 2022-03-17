@@ -22,7 +22,7 @@ export const IconButton = ({
     const handleClick = useCallback(() => {
         onClick && onClick();
         setIsPressed(false);
-    }, []);
+    }, [onClick]);
 
     const handleMouseLeave = useCallback(() => {
         isPressed && setIsPressed(false);

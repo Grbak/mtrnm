@@ -1,0 +1,8 @@
+.Slider {
+    display: flex;
+    align-items: center;
+}
+
+.Slider-Button {
+    flex: 1;
+}
