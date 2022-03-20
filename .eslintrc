@@ -13,7 +13,6 @@
         "no-tabs": 0,
         "comma-dangle": [1, "never"],
         "object-curly-spacing": [1, "always"],
-        "no-unused-vars": 2,
         "no-debugger": 0,
         "no-console": 0,
         "max-len": [1, { "ignoreComments": true }],
@@ -29,8 +28,9 @@
         "react/jsx-filename-extension": 0,
         "import/extensions": 0,
         "no-shadow": 0,
-        "no-unused-vars": "off",
+        "no-unused-vars": 0,
         "@typescript-eslint/no-unused-vars": "error",
+        "react/require-default-props": 0,
         "prettier/prettier": "error"
     },
     "plugins": ["@typescript-eslint", "prettier"]

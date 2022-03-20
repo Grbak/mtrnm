@@ -4,11 +4,11 @@ import React, { FC, useCallback } from 'react';
 // yandex-ui
 import { Slider as BaseSlider } from '@yandex/ui/Slider/desktop/bundle';
 
-// const
-import { cnSlider } from './Slider.const';
-
 // components
 import { IconButton } from 'global/IconButton';
+
+// const
+import { cnSlider } from './Slider.const';
 
 // styles
 import './Slider.css';
@@ -71,8 +71,4 @@ export const Slider: FC<SliderProps> = ({ className, value, onChange }) => {
             </IconButton>
         </div>
     );
-};
-
-Slider.defaultProps = {
-    className: null
 };

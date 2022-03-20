@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { FC } from 'react';
 
 // components
 import { Text } from 'global/Text';
@@ -10,7 +10,13 @@ import { cnPlug, cnPlugTitle, cnPlugSubtitle } from './Plug.const';
 // styles
 import './Plug.css';
 
-export const Plug = ({ title, subtitle, className }) => {
+type PlugProps = {
+    className?: string;
+    title: string;
+    subtitle: string;
+};
+
+export const Plug: FC<PlugProps> = ({ title, subtitle, className }) => {
     return (
         <div className={cnPlug(null, [className])}>
             <svg

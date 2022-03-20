@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { FC, useState, useCallback, RefObject } from 'react';
 
 // const
 import { cnIconButton } from './IconButton.const';
@@ -6,7 +6,15 @@ import { cnIconButton } from './IconButton.const';
 // styles
 import './IconButton.css';
 
-export const IconButton = ({
+type IconButtonProps = {
+    className?: string;
+    size?: 's' | 'm';
+    onClick: () => void;
+    innerRef?: RefObject<HTMLDivElement>;
+    pressed?: boolean;
+};
+
+export const IconButton: FC<IconButtonProps> = ({
     className,
     size = 'm',
     onClick,
