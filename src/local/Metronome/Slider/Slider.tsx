@@ -23,7 +23,7 @@ const MIN_BPM = 60;
 const MAX_BPM = 240;
 
 export const Slider: FC<SliderProps> = ({ className, value, onChange }) => {
-    const handleChange = useCallback((_: any, value: number[]) => {
+    const handleChange = useCallback((_, value: number[]) => {
         onChange(Number(value));
     }, []);
 

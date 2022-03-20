@@ -18,7 +18,8 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
         alias: {
             global: path.resolve(__dirname, './src/global'),
-            local: path.resolve(__dirname, './src/local')
+            local: path.resolve(__dirname, './src/local'),
+            assets: path.resolve(__dirname, './src/assets')
         }
     },
     plugins: [
@@ -56,6 +57,10 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader']
+            },
+            {
+                test: /\.mp3$/,
+                loader: 'file-loader'
             }
         ]
     }

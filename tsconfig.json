@@ -4,7 +4,9 @@
         "jsx": "react",
         "baseUrl": "./",
         "paths": {
-            "global/*": ["src/global/*"]
+            "global/*": ["src/global/*"],
+            "local/*": ["src/global/*"],
+            "assets/*": ["src/assets/*"]
         },
         /* Visit https://aka.ms/tsconfig.json to read more about this file */
 

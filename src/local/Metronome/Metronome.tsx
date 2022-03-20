@@ -1,8 +1,12 @@
 import React, { useState, FC, useCallback, useMemo, ChangeEvent } from 'react';
+import useSound from 'use-sound';
 
 // yandex-ui
 import { Button } from '@yandex/ui/Button/desktop/bundle';
 import { RadioButton } from '@yandex/ui/RadioButton/desktop/bundle';
+
+// assets
+import drums from 'assets/sounds/drums.mp3';
 
 // components
 import { Text } from 'global/Text';
@@ -22,9 +26,35 @@ enum TimeSignature {
     TwoSeconds = 'TwoSeconds'
 }
 
+type SetIntervalID = ReturnType<typeof setInterval> | null;
+
+const COUNT_OF_SECONDS_IN_ONE_MINUTE = 60;
+
 export const Metronome: FC = () => {
     const [value, setValue] = useState(TimeSignature.FourQuarters);
     const [bpm, setBpm] = useState(150);
+    const [intervalID, setIntervalID] = useState<SetIntervalID>(null);
+    const [tick] = useSound(drums, {
+        sprite: {
+            kick: [0, 350],
+            hihat: [374, 160],
+            snare: [666, 290],
+            cowbell: [968, 200]
+        }
+    });
+
+    const handlePlayClick = useCallback(() => {
+        if (intervalID) {
+            clearInterval(intervalID);
+            setIntervalID(null);
+        } else {
+            const frequency = (COUNT_OF_SECONDS_IN_ONE_MINUTE * 1000) / bpm;
+            const newIntervalID = setInterval(() => {
+                tick({ id: 'cowbell' });
+            }, frequency);
+            setIntervalID(newIntervalID);
+        }
+    }, [intervalID, bpm]);
 
     const handleSliderChange = useCallback((value: number) => {
         setBpm(value);
@@ -66,7 +96,12 @@ export const Metronome: FC = () => {
                 options={radioOptions}
                 onChange={handleRadioChange}
             />
-            <Button width="max" view="action" size="m">
+            <Button
+                width="max"
+                view="action"
+                size="m"
+                onClick={handlePlayClick}
+            >
                 XO!
             </Button>
         </div>
