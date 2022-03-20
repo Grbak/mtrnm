@@ -28,11 +28,17 @@ export const Slider: FC<SliderProps> = ({ className, value, onChange }) => {
     }, []);
 
     const handleIncrement = () => {
-        onChange(value + 1);
+        const newValue = value + 1;
+        if (newValue <= MAX_BPM) {
+            onChange(newValue);
+        }
     };
 
     const handleDecrement = () => {
-        onChange(value - 1);
+        const newValue = value - 1;
+        if (newValue >= MIN_BPM) {
+            onChange(newValue);
+        }
     };
 
     return (

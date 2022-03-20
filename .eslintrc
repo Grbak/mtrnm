@@ -37,6 +37,7 @@
         "@typescript-eslint/no-unused-vars": "error",
         "react/require-default-props": 0,
         "react-hooks/exhaustive-deps": 0,
+        "import/order": 0,
         "prettier/prettier": "error"
     },
     "plugins": ["@typescript-eslint", "prettier", "react-hooks"]

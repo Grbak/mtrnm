@@ -1,19 +1,33 @@
-import React, { useState, FC, useCallback, useMemo, ChangeEvent } from 'react';
+import React, {
+    useState,
+    FC,
+    useCallback,
+    useMemo,
+    ChangeEvent,
+    useEffect
+} from 'react';
 import useSound from 'use-sound';
 
 // yandex-ui
 import { Button } from '@yandex/ui/Button/desktop/bundle';
 import { RadioButton } from '@yandex/ui/RadioButton/desktop/bundle';
 
-// assets
-import drums from 'assets/sounds/drums.mp3';
-
 // components
 import { Text } from 'global/Text';
 import { Slider } from './Slider';
 
+// assets
+import drums from 'assets/sounds/drums.mp3';
+import PlayIcon from '../../assets/icons/play.svg';
+import PauseIcon from '../../assets/icons/pause.svg';
+
 // const
-import { cnMetronome, cnMetronomeRadio } from './Metronome.const';
+import {
+    cnMetronome,
+    cnMetronomeRadio,
+    cnMetronomeVisualizer,
+    cnMetronomeTick
+} from './Metronome.const';
 
 // styles
 import './Metronome.css';
@@ -43,18 +57,29 @@ export const Metronome: FC = () => {
         }
     });
 
+    const startPlaying = useCallback(() => {
+        const frequency = (COUNT_OF_SECONDS_IN_ONE_MINUTE * 1000) / bpm;
+        const newIntervalID = setInterval(() => {
+            tick({ id: 'cowbell' });
+        }, frequency);
+        setIntervalID(newIntervalID);
+    }, [bpm, tick]);
+
+    useEffect(() => {
+        if (intervalID) {
+            clearInterval(intervalID);
+            startPlaying();
+        }
+    }, [bpm]);
+
     const handlePlayClick = useCallback(() => {
         if (intervalID) {
             clearInterval(intervalID);
             setIntervalID(null);
         } else {
-            const frequency = (COUNT_OF_SECONDS_IN_ONE_MINUTE * 1000) / bpm;
-            const newIntervalID = setInterval(() => {
-                tick({ id: 'cowbell' });
-            }, frequency);
-            setIntervalID(newIntervalID);
+            startPlaying();
         }
-    }, [intervalID, bpm]);
+    }, [intervalID, bpm, tick]);
 
     const handleSliderChange = useCallback((value: number) => {
         setBpm(value);
@@ -78,15 +103,17 @@ export const Metronome: FC = () => {
         []
     );
 
+    const isPlaying = useMemo(() => Boolean(intervalID), [intervalID]);
+
     return (
         <div className={cnMetronome()}>
             <Text type="h2">{bpm}</Text>
             <Slider value={bpm} onChange={handleSliderChange} />
-            <div style={{ display: 'flex', gap: 'var(--space-m)' }}>
-                <div className="xo" />
-                <div className="xo" />
-                <div className="xo" />
-                <div className="xo" />
+            <div className={cnMetronomeVisualizer()}>
+                <div className={cnMetronomeTick()} />
+                <div className={cnMetronomeTick()} />
+                <div className={cnMetronomeTick()} />
+                <div className={cnMetronomeTick()} />
             </div>
             <RadioButton
                 className={cnMetronomeRadio()}
@@ -102,7 +129,7 @@ export const Metronome: FC = () => {
                 size="m"
                 onClick={handlePlayClick}
             >
-                XO!
+                {isPlaying ? <PauseIcon /> : <PlayIcon />}
             </Button>
         </div>
     );
