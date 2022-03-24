@@ -15,6 +15,7 @@ import { RadioButton } from '@yandex/ui/RadioButton/desktop/bundle';
 // components
 import { Text } from 'global/Text';
 import { Slider } from './Slider';
+import { MetronomeVisualizer as Visualizer } from './Visualizer/Metronome-Visualizer';
 
 // assets
 import drums from 'assets/sounds/drums.mp3';
@@ -22,12 +23,7 @@ import PlayIcon from '../../assets/icons/play.svg';
 import PauseIcon from '../../assets/icons/pause.svg';
 
 // const
-import {
-    cnMetronome,
-    cnMetronomeRadio,
-    cnMetronomeVisualizer,
-    cnMetronomeTick
-} from './Metronome.const';
+import { cnMetronome, cnMetronomeRadio } from './Metronome.const';
 
 // styles
 import './Metronome.css';
@@ -48,12 +44,13 @@ export const Metronome: FC = () => {
     const [value, setValue] = useState(TimeSignature.FourQuarters);
     const [bpm, setBpm] = useState(150);
     const [intervalID, setIntervalID] = useState<SetIntervalID>(null);
+
     const [tick] = useSound(drums, {
         sprite: {
             kick: [0, 350],
             hihat: [374, 160],
             snare: [666, 290],
-            cowbell: [968, 200]
+            cowbell: [990, 200]
         }
     });
 
@@ -61,6 +58,26 @@ export const Metronome: FC = () => {
         const frequency = (COUNT_OF_SECONDS_IN_ONE_MINUTE * 1000) / bpm;
         const newIntervalID = setInterval(() => {
             tick({ id: 'cowbell' });
+            const activeTick = document.getElementsByClassName('Active')[0];
+            if (activeTick) {
+                const currentTick = Number(activeTick.dataset.id);
+                document
+                    .querySelectorAll(`[data-id='${currentTick}']`)[0]
+                    .classList.remove('Active');
+                if (currentTick === 4) {
+                    document
+                        .querySelectorAll(`[data-id='1']`)[0]
+                        .classList.add('Active');
+                } else {
+                    document
+                        .querySelectorAll(`[data-id='${currentTick + 1}']`)[0]
+                        .classList.add('Active');
+                }
+            } else {
+                document
+                    .querySelectorAll("[data-id='1']")[0]
+                    .classList.add('Active');
+            }
         }, frequency);
         setIntervalID(newIntervalID);
     }, [bpm, tick]);
@@ -109,12 +126,7 @@ export const Metronome: FC = () => {
         <div className={cnMetronome()}>
             <Text type="h2">{bpm}</Text>
             <Slider value={bpm} onChange={handleSliderChange} />
-            <div className={cnMetronomeVisualizer()}>
-                <div className={cnMetronomeTick()} />
-                <div className={cnMetronomeTick()} />
-                <div className={cnMetronomeTick()} />
-                <div className={cnMetronomeTick()} />
-            </div>
+            <Visualizer />
             <RadioButton
                 className={cnMetronomeRadio()}
                 size="m"

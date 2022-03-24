@@ -19,3 +19,7 @@
     background: var(--color-test-1);
     border-radius: var(--round-s);
 }
+
+.Active {
+    background: red;
+}
