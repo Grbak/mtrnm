@@ -1,17 +1,32 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
+
+// utils
+import { getTicksCountFromTimeSignature } from '../Metronome.utils';
+
+// types
+import { TimeSignature } from '../Metronome';
 
 // const
 import { cnMetronomeVisualizer, cnMetronomeTick } from '../Metronome.const';
 
-type MetronomeVisualizerProps = {};
+type MetronomeVisualizerProps = {
+    timeSignature: TimeSignature;
+};
 
-export const MetronomeVisualizer: FC<MetronomeVisualizerProps> = () => {
+export const MetronomeVisualizer: FC<MetronomeVisualizerProps> = ({
+    timeSignature
+}) => {
     return (
         <div className={cnMetronomeVisualizer()}>
-            <div className={cnMetronomeTick()} data-id="1" />
-            <div className={cnMetronomeTick()} data-id="2" />
-            <div className={cnMetronomeTick()} data-id="3" />
-            <div className={cnMetronomeTick()} data-id="4" />
+            {Array.from({
+                length: getTicksCountFromTimeSignature(timeSignature)
+            }).map((_, index) => (
+                <div
+                    className={cnMetronomeTick()}
+                    key={`metronome-tick-${index + 1}`}
+                    data-id={index + 1}
+                />
+            ))}
         </div>
     );
 };

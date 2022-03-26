@@ -33,7 +33,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.ts?x$/,
+                test: /\.tsx?$/,
                 use: {
                     loader: 'babel-loader',
                     options: {

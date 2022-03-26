@@ -20,7 +20,6 @@
         "object-curly-spacing": [1, "always"],
         "no-debugger": 0,
         "no-console": 0,
-        "max-len": [1, { "ignoreComments": true }],
         "import/prefer-default-export": "off",
         "react/function-component-definition": "off",
         "react/prop-types": 0,
@@ -38,6 +37,15 @@
         "react/require-default-props": 0,
         "react-hooks/exhaustive-deps": 0,
         "import/order": 0,
+        "default-case": 0,
+        "max-len": [
+            2,
+            {
+                "code": 80,
+                "ignorePattern": "^import\\W.*",
+                "ignoreComments": true
+            }
+        ],
         "prettier/prettier": "error"
     },
     "plugins": ["@typescript-eslint", "prettier", "react-hooks"]

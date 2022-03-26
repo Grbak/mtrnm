@@ -17,19 +17,25 @@ import { Text } from 'global/Text';
 import { Slider } from './Slider';
 import { MetronomeVisualizer as Visualizer } from './Visualizer/Metronome-Visualizer';
 
+// utils
+import { visualizeTicking } from './Metronome.utils';
+
 // assets
 import drums from 'assets/sounds/drums.mp3';
 import PlayIcon from '../../assets/icons/play.svg';
 import PauseIcon from '../../assets/icons/pause.svg';
 
 // const
-import { cnMetronome, cnMetronomeRadio } from './Metronome.const';
+import {
+    cnMetronome,
+    cnMetronomeRadio,
+    activeTickClassName
+} from './Metronome.const';
 
 // styles
 import './Metronome.css';
 
-enum TimeSignature {
-    TwoQuarters = 'TwoQuarters',
+export enum TimeSignature {
     ThreeQuarters = 'ThreeQuarters',
     FourQuarters = 'FourQuarters',
     SixEights = 'SixEights',
@@ -41,11 +47,13 @@ type SetIntervalID = ReturnType<typeof setInterval> | null;
 const COUNT_OF_SECONDS_IN_ONE_MINUTE = 60;
 
 export const Metronome: FC = () => {
-    const [value, setValue] = useState(TimeSignature.FourQuarters);
+    const [timeSignature, setTimeSignature] = useState(
+        TimeSignature.FourQuarters
+    );
     const [bpm, setBpm] = useState(150);
     const [intervalID, setIntervalID] = useState<SetIntervalID>(null);
 
-    const [tick] = useSound(drums, {
+    const [playSound] = useSound(drums, {
         sprite: {
             kick: [0, 350],
             hihat: [374, 160],
@@ -57,46 +65,30 @@ export const Metronome: FC = () => {
     const startPlaying = useCallback(() => {
         const frequency = (COUNT_OF_SECONDS_IN_ONE_MINUTE * 1000) / bpm;
         const newIntervalID = setInterval(() => {
-            tick({ id: 'cowbell' });
-            const activeTick = document.getElementsByClassName('Active')[0];
-            if (activeTick) {
-                const currentTick = Number(activeTick.dataset.id);
-                document
-                    .querySelectorAll(`[data-id='${currentTick}']`)[0]
-                    .classList.remove('Active');
-                if (currentTick === 4) {
-                    document
-                        .querySelectorAll(`[data-id='1']`)[0]
-                        .classList.add('Active');
-                } else {
-                    document
-                        .querySelectorAll(`[data-id='${currentTick + 1}']`)[0]
-                        .classList.add('Active');
-                }
-            } else {
-                document
-                    .querySelectorAll("[data-id='1']")[0]
-                    .classList.add('Active');
-            }
+            playSound({ id: 'cowbell' });
+            visualizeTicking(timeSignature);
         }, frequency);
         setIntervalID(newIntervalID);
-    }, [bpm, tick]);
+    }, [bpm, playSound, timeSignature]);
 
     useEffect(() => {
         if (intervalID) {
             clearInterval(intervalID);
             startPlaying();
         }
-    }, [bpm]);
+    }, [bpm, timeSignature]);
 
     const handlePlayClick = useCallback(() => {
         if (intervalID) {
             clearInterval(intervalID);
             setIntervalID(null);
+            document
+                .getElementsByClassName(activeTickClassName)[0]
+                .classList.remove(activeTickClassName);
         } else {
             startPlaying();
         }
-    }, [intervalID, bpm, tick]);
+    }, [intervalID, bpm, playSound]);
 
     const handleSliderChange = useCallback((value: number) => {
         setBpm(value);
@@ -104,14 +96,13 @@ export const Metronome: FC = () => {
 
     const handleRadioChange = useCallback(
         (event: ChangeEvent<HTMLInputElement>) => {
-            setValue(event.target.value as TimeSignature);
+            setTimeSignature(event.target.value as TimeSignature);
         },
         []
     );
 
     const radioOptions = useMemo(
         () => [
-            { value: TimeSignature.TwoQuarters, children: '2/4' },
             { value: TimeSignature.ThreeQuarters, children: '3/4' },
             { value: TimeSignature.FourQuarters, children: '4/4' },
             { value: TimeSignature.SixEights, children: '6/8' },
@@ -126,12 +117,12 @@ export const Metronome: FC = () => {
         <div className={cnMetronome()}>
             <Text type="h2">{bpm}</Text>
             <Slider value={bpm} onChange={handleSliderChange} />
-            <Visualizer />
+            <Visualizer timeSignature={timeSignature} />
             <RadioButton
                 className={cnMetronomeRadio()}
                 size="m"
                 view="default"
-                value={value}
+                value={timeSignature}
                 options={radioOptions}
                 onChange={handleRadioChange}
             />

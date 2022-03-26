@@ -20,6 +20,6 @@
     border-radius: var(--round-s);
 }
 
-.Active {
+.Metronome-Tick_active {
     background: red;
 }
