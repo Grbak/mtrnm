@@ -18,7 +18,7 @@ import { Slider } from './Slider';
 import { MetronomeVisualizer as Visualizer } from './Visualizer/Metronome-Visualizer';
 
 // utils
-import { visualizeTicking } from './Metronome.utils';
+import { visualizeTicking, removeActiveTickClassName } from './Metronome.utils';
 
 // assets
 import drums from 'assets/sounds/drums.mp3';
@@ -26,11 +26,7 @@ import PlayIcon from '../../assets/icons/play.svg';
 import PauseIcon from '../../assets/icons/pause.svg';
 
 // const
-import {
-    cnMetronome,
-    cnMetronomeRadio,
-    activeTickClassName
-} from './Metronome.const';
+import { cnMetronome, cnMetronomeRadio } from './Metronome.const';
 
 // styles
 import './Metronome.css';
@@ -75,6 +71,7 @@ export const Metronome: FC = () => {
         if (intervalID) {
             clearInterval(intervalID);
             startPlaying();
+            removeActiveTickClassName();
         }
     }, [bpm, timeSignature]);
 
@@ -82,13 +79,11 @@ export const Metronome: FC = () => {
         if (intervalID) {
             clearInterval(intervalID);
             setIntervalID(null);
-            document
-                .getElementsByClassName(activeTickClassName)[0]
-                .classList.remove(activeTickClassName);
+            removeActiveTickClassName();
         } else {
             startPlaying();
         }
-    }, [intervalID, bpm, playSound]);
+    }, [intervalID, bpm, playSound, timeSignature]);
 
     const handleSliderChange = useCallback((value: number) => {
         setBpm(value);

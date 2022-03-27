@@ -21,5 +21,10 @@
 }
 
 .Metronome-Tick_active {
-    background: red;
+    background: var(--color-test-5);
 }
+
+/* .Metronome-Tick_active:first-child {
+    transform: scale(1.25);
+    background: var(--color-test-6);
+} */

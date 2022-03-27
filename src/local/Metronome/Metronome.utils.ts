@@ -1,8 +1,7 @@
 // types
 import { TimeSignature } from './Metronome';
 
-// const
-import { activeTickClassName } from './Metronome.const';
+export const activeTickClassName = 'Metronome-Tick_active';
 
 export const getTicksCountFromTimeSignature = (
     timeSignature: TimeSignature
@@ -38,5 +37,13 @@ export const visualizeTicking = (timeSignature: TimeSignature) => {
         document
             .querySelectorAll(`[data-id='1']`)[0]
             .classList.add(activeTickClassName);
+    }
+};
+
+export const removeActiveTickClassName = () => {
+    const neededElement =
+        document.getElementsByClassName(activeTickClassName)[0];
+    if (neededElement) {
+        neededElement.classList.remove(activeTickClassName);
     }
 };
