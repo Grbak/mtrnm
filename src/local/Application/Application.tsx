@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 // components
 import { ApplicationContent as Content } from './Content/Application-Content';
@@ -10,7 +10,7 @@ import { cnApplication, cnApplicationFooter } from './Application.const';
 // styles
 import './Application.css';
 
-export const Application = () => {
+export const Application: FC = () => {
     return (
         <div className={cnApplication()}>
             <Header />

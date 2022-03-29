@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, FC } from 'react';
 
 // yandex-ui
 import { Button } from '@yandex/ui/Button/desktop/bundle';
@@ -15,7 +15,7 @@ import {
 // styles
 import './Application-Header.css';
 
-export const ApplicationHeader = () => {
+export const ApplicationHeader: FC = () => {
     const [showPopup, setShowPopup] = useState(false);
     const langAnchor = useRef();
     return (
