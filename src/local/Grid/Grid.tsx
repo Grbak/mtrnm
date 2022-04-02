@@ -1,4 +1,4 @@
-import React, { FC, useState, useCallback } from 'react';
+import React, { FC, useState, useCallback, useMemo } from 'react';
 import { observer } from 'mobx-react';
 import {
     Responsive as ResponsiveGridLayout,
@@ -11,7 +11,12 @@ import { Widget } from 'global/Widget';
 import { Metronome } from 'local/Metronome';
 
 // stores
-import { GridStore, Breakpoint } from './Grid.store';
+import {
+    GridStore,
+    Breakpoint,
+    WidgetData,
+    Widget as WidgetType
+} from './Grid.store';
 
 // const
 import { columns, breakpoints } from './Grid.const';
@@ -25,15 +30,62 @@ export const Grid: FC = observer(() => {
         store.changeBreakpoint(breakpoint);
     }, []);
 
-    const handleLayoutChange = useCallback(
-        (layout: Layout[]) => store.changeLayout(layout),
+    const handleDragStop = useCallback(
+        (layout: Layout[]) => store.stopDrag(layout),
         []
     );
+
+    const handleWidgetMove = useCallback(
+        (widget: WidgetType) => () => store.setDraggableWidget(widget),
+        []
+    );
+
+    const widgetData: WidgetData[] = useMemo(
+        () => [
+            {
+                id: 'metronome',
+                title: 'Metronome',
+                content: <Metronome />
+            },
+            {
+                id: 'statistics',
+                title: 'Statistics',
+                content: <div />,
+                isClosed: true
+            },
+            {
+                id: 'songbook',
+                title: 'Songbook',
+                content: <div />
+                // isClosed: true
+            },
+            {
+                id: 'unknown',
+                title: 'Unknown',
+                content: <div />,
+                isClosed: true
+            }
+        ],
+        []
+    );
+
+    const widgetElements = widgetData.map((data: WidgetData) => (
+        <div key={data.id}>
+            <Widget
+                title={data.title}
+                onMove={handleWidgetMove(data.id)}
+                onHide={() => console.log(`widget ${data.id} is hidden`)}
+                isClosed={data.isClosed}
+            >
+                {data.content}
+            </Widget>
+        </div>
+    ));
 
     return (
         <GridLayout
             isResizable={false}
-            isDraggable
+            // isDraggable={Boolean(store.draggableWidget)}
             isBounded
             rowHeight={100}
             breakpoints={breakpoints}
@@ -41,22 +93,9 @@ export const Grid: FC = observer(() => {
             layouts={store.layouts}
             margin={[24, 24]}
             onBreakpointChange={handleBreakpointChange}
-            onLayoutChange={handleLayoutChange}
+            onDragStop={handleDragStop}
         >
-            <div key="metronome">
-                <Widget title="Metronome">
-                    <Metronome />
-                </Widget>
-            </div>
-            <div key="songbook">
-                <Widget title="Songbook" isClosed />
-            </div>
-            <div key="statistics">
-                <Widget title="Statisctics" isClosed />
-            </div>
-            <div key="unknown">
-                <Widget title="Something else" isClosed />
-            </div>
+            {widgetElements}
         </GridLayout>
     );
 });

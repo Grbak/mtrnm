@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, FC } from 'react';
 
 // components
 import { IconButton } from 'global/IconButton';
@@ -20,9 +20,24 @@ import {
 // styles
 import './Widget.css';
 
-export const Widget = ({ children, title, className, isClosed }) => {
+type WidgetProps = {
+    title: string;
+    className?: string;
+    isClosed?: boolean;
+    onMove: () => void;
+    onHide: () => void;
+};
+
+export const Widget: FC<WidgetProps> = ({
+    children,
+    title,
+    className,
+    isClosed,
+    onMove,
+    onHide
+}) => {
     const [showPopup, setShowPopup] = useState(false);
-    const anchor = useRef();
+    const anchor = useRef(null);
 
     const handlePopupOpen = useCallback(() => {
         setShowPopup(true);
@@ -35,11 +50,11 @@ export const Widget = ({ children, title, className, isClosed }) => {
     const popupItems = [
         {
             content: 'Move',
-            onClick: () => console.log('Move')
+            onClick: onMove
         },
         {
             content: 'Hide',
-            onClick: () => console.log('Hide')
+            onClick: onHide
         }
     ];
 

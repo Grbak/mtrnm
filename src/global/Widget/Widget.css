@@ -11,10 +11,6 @@
     display: flex;
     align-items: center;
     height: 32px;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    cursor: default;
 }
 
 .Widget-HeaderAddon {

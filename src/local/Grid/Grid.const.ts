@@ -9,7 +9,7 @@ export const breakpoints = {
 export const columns = {
     lg: 10,
     md: 10,
-    sm: 20,
+    sm: 10,
     xs: 4,
     xxs: 2
 };
@@ -80,28 +80,28 @@ export const initialLayouts = {
             i: 'metronome',
             x: 0,
             y: 0,
-            w: 9,
+            w: 5,
             h: 3
         },
         {
             i: 'statistics',
             x: 0,
             y: 3,
-            w: 9,
+            w: 5,
             h: 3
         },
         {
             i: 'songbook',
-            x: 9,
+            x: 5,
             y: 0,
-            w: 11,
+            w: 5,
             h: 6
         },
         {
             i: 'unknown',
             x: 0,
             y: 3,
-            w: 20,
+            w: 10,
             h: 2
         }
     ],
