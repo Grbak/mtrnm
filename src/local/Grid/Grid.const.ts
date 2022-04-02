@@ -2,14 +2,14 @@ export const breakpoints = {
     lg: 1200,
     md: 996,
     sm: 768,
-    xs: 480,
+    xs: 640,
     xxs: 0
 };
 
 export const columns = {
-    lg: 12,
+    lg: 10,
     md: 10,
-    sm: 6,
+    sm: 20,
     xs: 4,
     xxs: 2
 };
@@ -17,48 +17,122 @@ export const columns = {
 export const initialLayouts = {
     lg: [
         {
-            i: 'a',
+            i: 'metronome',
             x: 0,
+            y: 0,
+            w: 3,
+            h: 3
+        },
+        {
+            i: 'statistics',
+            x: 3,
             y: 0,
             w: 4,
             h: 3
         },
         {
-            i: 'b',
-            x: 0,
-            y: 3,
-            w: 6,
-            h: 2
+            i: 'songbook',
+            x: 7,
+            y: 0,
+            w: 3,
+            h: 5
         },
         {
-            i: 'c',
-            x: 6,
+            i: 'unknown',
+            x: 0,
+            y: 3,
+            w: 7,
+            h: 2
+        }
+    ],
+    md: [
+        {
+            i: 'metronome',
+            x: 0,
             y: 0,
-            w: 6,
+            w: 5,
             h: 3
+        },
+        {
+            i: 'statistics',
+            x: 0,
+            y: 3,
+            w: 5,
+            h: 3
+        },
+        {
+            i: 'songbook',
+            x: 5,
+            y: 0,
+            w: 5,
+            h: 6
+        },
+        {
+            i: 'unknown',
+            x: 0,
+            y: 3,
+            w: 10,
+            h: 2
+        }
+    ],
+    sm: [
+        {
+            i: 'metronome',
+            x: 0,
+            y: 0,
+            w: 9,
+            h: 3
+        },
+        {
+            i: 'statistics',
+            x: 0,
+            y: 3,
+            w: 9,
+            h: 3
+        },
+        {
+            i: 'songbook',
+            x: 9,
+            y: 0,
+            w: 11,
+            h: 6
+        },
+        {
+            i: 'unknown',
+            x: 0,
+            y: 3,
+            w: 20,
+            h: 2
         }
     ],
     xs: [
         {
-            i: 'a',
+            i: 'metronome',
             x: 0,
             y: 0,
             w: 4,
             h: 3
         },
         {
-            i: 'b',
+            i: 'songbook',
             x: 0,
-            y: 2,
+            y: 3,
             w: 4,
-            h: 2
+            h: 5
         },
         {
-            i: 'c',
+            i: 'statistics',
             x: 0,
-            y: 6,
+            y: 8,
             w: 4,
             h: 3
+        },
+        {
+            i: 'unknown',
+            x: 0,
+            y: 11,
+            w: 4,
+            h: 2
         }
     ]
 };

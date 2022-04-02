@@ -7,6 +7,9 @@
     background: var(--color-test-2);
     border-radius: inherit;
     color: var(--color-test-5);
+    padding: var(--space-xl);
+    box-sizing: border-box;
+    text-align: center;
 }
 
 .Plug-Title {
