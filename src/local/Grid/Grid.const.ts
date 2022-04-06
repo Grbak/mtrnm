@@ -1,3 +1,8 @@
+import { cn } from '@bem-react/classname';
+
+const blockName = 'Grid';
+export const cnGrid = cn(blockName);
+
 export const breakpoints = {
     lg: 1200,
     md: 996,

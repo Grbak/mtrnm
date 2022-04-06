@@ -1,4 +1,4 @@
-import { action, makeObservable, observable, toJS } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import { ReactNode } from 'react';
 import { Layout } from 'react-grid-layout';
 
@@ -22,14 +22,7 @@ type Layouts = {
 
 export class GridStore {
     constructor() {
-        makeObservable(this, {
-            layouts: observable.deep,
-            currentBreakpoint: observable,
-            draggableWidget: observable,
-            setDraggableWidget: action,
-            changeBreakpoint: action,
-            stopDrag: action
-        });
+        makeAutoObservable(this);
     }
 
     layouts: Layouts = initialLayouts;
@@ -39,14 +32,7 @@ export class GridStore {
     draggableWidget: Widget | null = null;
 
     setDraggableWidget = (value: Widget) => {
-        // const requiredLayout = this.layouts[this.currentBreakpoint].find(
-        //     (layout: Layout) => layout.i === value
-        // );
-        // if (requiredLayout) {
-        //     requiredLayout.isDraggable = true;
-        //     this.draggableWidget = value;
-        // }
-        // console.log(toJS(requiredLayout));
+        this.draggableWidget = value;
     };
 
     changeBreakpoint = (value: Breakpoint): void => {
@@ -54,13 +40,7 @@ export class GridStore {
     };
 
     stopDrag = (value: Layout[]): void => {
-        // this.draggableWidget = null;
-        // const requiredLayout = this.layouts[this.currentBreakpoint].find(
-        //     (layout: Layout) => layout.i === this.draggableWidget
-        // );
-        // if (requiredLayout) {
-        //     requiredLayout.isDraggable = false;
-        // }
         this.layouts[this.currentBreakpoint] = value;
+        this.draggableWidget = null;
     };
 }

@@ -19,7 +19,10 @@ import {
 } from './Grid.store';
 
 // const
-import { columns, breakpoints } from './Grid.const';
+import { cnGrid, columns, breakpoints } from './Grid.const';
+
+// styles
+import './Grid.css';
 
 const GridLayout = WidthProvider(ResponsiveGridLayout);
 
@@ -56,8 +59,8 @@ export const Grid: FC = observer(() => {
             {
                 id: 'songbook',
                 title: 'Songbook',
-                content: <div />
-                // isClosed: true
+                content: <div />,
+                isClosed: true
             },
             {
                 id: 'unknown',
@@ -84,8 +87,9 @@ export const Grid: FC = observer(() => {
 
     return (
         <GridLayout
+            className={cnGrid({ draggable: Boolean(store.draggableWidget) })}
             isResizable={false}
-            // isDraggable={Boolean(store.draggableWidget)}
+            isDraggable={Boolean(store.draggableWidget)}
             isBounded
             rowHeight={100}
             breakpoints={breakpoints}
