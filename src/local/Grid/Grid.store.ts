@@ -10,7 +10,7 @@ export type WidgetData = {
     id: Widget;
     title: string;
     content: ReactNode;
-    isClosed?: boolean;
+    closed?: boolean;
 };
 
 // type Breakpoint = 'lg' | 'md' | 'sm' | 'xs' | 'xxs';
@@ -31,8 +31,9 @@ export class GridStore {
 
     draggableWidget: Widget | null = null;
 
-    setDraggableWidget = (value: Widget) => {
+    setDraggableWidget = (value: Widget | null) => {
         this.draggableWidget = value;
+        console.log(this.draggableWidget);
     };
 
     changeBreakpoint = (value: Breakpoint): void => {

@@ -1,5 +1,11 @@
 /* eslint-disable max-len */
-import React, { useState, useRef, useCallback, FC } from 'react';
+import React, {
+    useState,
+    useRef,
+    useCallback,
+    FC,
+    MouseEventHandler
+} from 'react';
 
 // components
 import { IconButton } from 'global/IconButton';
@@ -23,18 +29,24 @@ import './Widget.css';
 type WidgetProps = {
     title: string;
     className?: string;
-    isClosed?: boolean;
+    closed?: boolean;
     onMove: () => void;
     onHide: () => void;
+    onMouseDown: MouseEventHandler;
+    draggable: boolean;
+    blurred: boolean;
 };
 
 export const Widget: FC<WidgetProps> = ({
     children,
     title,
     className,
-    isClosed,
     onMove,
-    onHide
+    onHide,
+    onMouseDown,
+    closed,
+    draggable,
+    blurred
 }) => {
     const [showPopup, setShowPopup] = useState(false);
     const anchor = useRef(null);
@@ -47,10 +59,15 @@ export const Widget: FC<WidgetProps> = ({
         setShowPopup(false);
     }, []);
 
+    const handleMove = useCallback(() => {
+        setShowPopup(false);
+        onMove();
+    }, []);
+
     const popupItems = [
         {
             content: 'Move',
-            onClick: onMove
+            onClick: handleMove
         },
         {
             content: 'Hide',
@@ -59,8 +76,11 @@ export const Widget: FC<WidgetProps> = ({
     ];
 
     return (
-        <div className={cnWidget(null, [className])}>
-            {isClosed ? (
+        <div
+            className={cnWidget({ draggable, blurred }, [className])}
+            onMouseDown={onMouseDown}
+        >
+            {closed ? (
                 <Plug
                     className={cnWidgetPlug()}
                     title="This widget is still under development"

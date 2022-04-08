@@ -4,6 +4,7 @@
     background: var(--color-test-2);
     border-radius: var(--round-l);
     border: 1px solid var(--color-test-4);
+    position: relative;
 }
 
 .Widget-Header {
@@ -23,15 +24,8 @@
 
 .Widget-Plug {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: var(--color-test-2);
     border-radius: inherit;
     color: var(--color-test-5);
-    /* color: var(--color-test-6); */
-    /* color: black; */
 }
 
 .Widget-PlugTitle {
@@ -41,4 +35,32 @@
 
 .Widget-PlugSubtitle {
     margin-top: var(--space-xs);
+}
+
+.Widget_draggable {
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+}
+
+.Widget_draggable::after {
+    content: '';
+    /* background: rgba(0, 0, 0, 0.06); */
+    position: absolute;
+    border-radius: inherit;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.Widget_blurred::after {
+    content: '';
+    background: rgba(255, 255, 255, 0.6);
+    /* background: rgba(0, 0, 0, 0.06); */
+    position: absolute;
+    border-radius: inherit;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }

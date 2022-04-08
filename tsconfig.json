@@ -5,7 +5,7 @@
         "baseUrl": "./",
         "paths": {
             "global/*": ["src/global/*"],
-            "local/*": ["src/global/*"],
+            "local/*": ["src/local/*"],
             "assets/*": ["src/assets/*"]
         },
         /* Visit https://aka.ms/tsconfig.json to read more about this file */

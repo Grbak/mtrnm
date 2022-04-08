@@ -1,4 +1,4 @@
-import React, { FC, useState, useCallback, useMemo } from 'react';
+import React, { FC, useState, useCallback, useMemo, MouseEvent } from 'react';
 import { observer } from 'mobx-react';
 import {
     Responsive as ResponsiveGridLayout,
@@ -20,9 +20,6 @@ import {
 
 // const
 import { cnGrid, columns, breakpoints } from './Grid.const';
-
-// styles
-import './Grid.css';
 
 const GridLayout = WidthProvider(ResponsiveGridLayout);
 
@@ -54,19 +51,18 @@ export const Grid: FC = observer(() => {
                 id: 'statistics',
                 title: 'Statistics',
                 content: <div />,
-                isClosed: true
+                closed: true
             },
             {
                 id: 'songbook',
                 title: 'Songbook',
-                content: <div />,
-                isClosed: true
+                content: <div />
             },
             {
                 id: 'unknown',
                 title: 'Unknown',
                 content: <div />,
-                isClosed: true
+                closed: true
             }
         ],
         []
@@ -78,7 +74,18 @@ export const Grid: FC = observer(() => {
                 title={data.title}
                 onMove={handleWidgetMove(data.id)}
                 onHide={() => console.log(`widget ${data.id} is hidden`)}
-                isClosed={data.isClosed}
+                onMouseDown={(event: MouseEvent) => {
+                    if (data.id !== store.draggableWidget) {
+                        console.log(event);
+                        event.preventDefault();
+                        store.setDraggableWidget(null);
+                    }
+                }}
+                closed={data.closed}
+                draggable={store.draggableWidget === data.id}
+                blurred={Boolean(
+                    store.draggableWidget && store.draggableWidget !== data.id
+                )}
             >
                 {data.content}
             </Widget>
