@@ -9,6 +9,7 @@ import {
 // components
 import { Widget } from 'global/Widget';
 import { Metronome } from 'local/Metronome';
+import { Songbook } from 'local/Songbook';
 
 // stores
 import {
@@ -56,7 +57,7 @@ export const Grid: FC = observer(() => {
             {
                 id: 'songbook',
                 title: 'Songbook',
-                content: <div />
+                content: <Songbook />
             },
             {
                 id: 'unknown',
@@ -76,7 +77,6 @@ export const Grid: FC = observer(() => {
                 onHide={() => console.log(`widget ${data.id} is hidden`)}
                 onMouseDown={(event: MouseEvent) => {
                     if (data.id !== store.draggableWidget) {
-                        console.log(event);
                         event.preventDefault();
                         store.setDraggableWidget(null);
                     }

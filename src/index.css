@@ -4,7 +4,7 @@
 .react-grid-item.react-grid-placeholder {
     background-color: var(--color-brand-3);
     border-radius: var(--round-m);
-  }
+}
 
 @font-faсe {
     font-family: 'Roboto';

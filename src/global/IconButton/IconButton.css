@@ -3,19 +3,19 @@
     align-items: center;
     justify-content: center;
     border-radius: var(--space-xs);
-    transition: transform 0.15s ease-out;
+    transition: transform 0.15s ease-out, background-color 0.3s ease-in-out;
     transform: scale(1);
     cursor: pointer;
 }
 
 .IconButton:hover {
-    background: var(--color-test-1);
+    background-color: var(--color-test-1);
 }
 
 .IconButton_pressed {
     transform: scale(0.9);
     transform-origin: center;
-    background: var(--color-test-1);
+    background-color: var(--color-test-1);
 }
 
 .IconButton_size_m {

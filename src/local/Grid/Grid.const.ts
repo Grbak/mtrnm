@@ -32,21 +32,21 @@ export const initialLayouts = {
             i: 'statistics',
             x: 3,
             y: 0,
-            w: 4,
+            w: 3,
             h: 3
         },
         {
             i: 'songbook',
-            x: 7,
+            x: 6,
             y: 0,
-            w: 3,
+            w: 4,
             h: 5
         },
         {
             i: 'unknown',
             x: 0,
             y: 3,
-            w: 7,
+            w: 6,
             h: 2
         }
     ],
