@@ -19,6 +19,7 @@
 }
 
 .Widget-Content {
+    height: calc(100% - 80px);
     padding: 0 var(--space-m) var(--space-m);
 }
 

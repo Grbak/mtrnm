@@ -11,8 +11,3 @@
 .Songbook-Song:last-child {
     border-bottom: none;
 }
-
-.Songbook-Song:hover {
-    /* background-color: red; */
-    /* border-radius: var(--round-s); */
-}

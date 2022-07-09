@@ -20,7 +20,7 @@ type SongbookSongProps = Song & {
 };
 
 export const SongbookSong: FC<SongbookSongProps> = memo(
-    ({ className, title, author, bpm }) => {
+    ({ className, title, author }) => {
         return (
             <div className={cnSongbookSong(null, [className])}>
                 <div
@@ -30,7 +30,7 @@ export const SongbookSong: FC<SongbookSongProps> = memo(
                     <Text type="body1">{title}</Text>
                     <Text type="body2">{author}</Text>
                 </div>
-                <Text type="h4">{bpm}</Text>
+                {/* <Text type="h4">{bpm}</Text> */}
             </div>
         );
     }

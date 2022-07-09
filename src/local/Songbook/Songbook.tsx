@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 // yandex-ui
 // import { Textinput } from '@yandex/ui/Textinput/desktop/bundle';
 import { Button } from '@yandex/ui/Button/desktop/bundle';
+import { Spin } from '@yandex/ui/Spin/desktop/bundle';
 
 // components
 import { SongbookSong as Song } from './Song/Songbook-Song';
@@ -12,7 +13,7 @@ import { SongbookSong as Song } from './Song/Songbook-Song';
 import { SongbookStore } from './Songbook.store';
 
 // const
-import { cnSongbook, cnSongbookList } from './Songbook.const';
+import { cnSongbook, cnSongbookList, cnSongbookLoader } from './Songbook.const';
 
 // styles
 import './Songbook.css';
@@ -25,7 +26,6 @@ export type Song = {
 
 export const Songbook: FC = observer(() => {
     const [store] = useState(new SongbookStore());
-    // const [value, setValue] = useState('test');
 
     const handleAdd = useCallback(() => {
         store.putSong({
@@ -35,7 +35,11 @@ export const Songbook: FC = observer(() => {
         });
     }, []);
 
-    return (
+    store.isLoading && setTimeout(() => store.setIsLoading(false), 1000);
+
+    return store.isLoading ? (
+        <Spin className={cnSongbookLoader()} progress view="default" size="l" />
+    ) : (
         <div className={cnSongbook()}>
             <div className={cnSongbookList()}>
                 {store.songs.map((item: Song) => (

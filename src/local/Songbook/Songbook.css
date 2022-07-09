@@ -1,5 +1,30 @@
 
 .Songbook {
-    /* background: red; */
-    overflow-y: scroll;
+    height: 100%;
 }
+
+.Songbook-List {
+    height: calc(100% - 50px);
+    overflow-y: scroll;
+    margin-bottom: var(--space-m);
+}
+
+.Songbook-Loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* .Songbook {
+    display: flex;
+    flex-direction: column;
+}
+
+.Songbook-List {
+    height: calc(100% - 50px);
+    overflow-y: scroll;
+    margin-bottom: var(--space-m);
+    min-height: 0px;
+} */

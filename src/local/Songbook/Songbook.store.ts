@@ -8,6 +8,18 @@ export class SongbookStore {
         makeAutoObservable(this);
     }
 
+    search = '';
+
+    changeSearch = (value: string) => {
+        this.search = value;
+    };
+
+    isLoading = true;
+
+    setIsLoading = (value: boolean) => {
+        this.isLoading = value;
+    };
+
     songs: Song[] = [
         {
             title: 'Freaks',
