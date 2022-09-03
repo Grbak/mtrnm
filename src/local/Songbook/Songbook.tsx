@@ -2,7 +2,7 @@ import React, { FC, useCallback, useState } from 'react';
 import { observer } from 'mobx-react';
 
 // yandex-ui
-// import { Textinput } from '@yandex/ui/Textinput/desktop/bundle';
+import { Textinput } from '@yandex/ui/Textinput/desktop/bundle';
 import { Button } from '@yandex/ui/Button/desktop/bundle';
 import { Spin } from '@yandex/ui/Spin/desktop/bundle';
 
@@ -26,14 +26,18 @@ export type Song = {
 
 export const Songbook: FC = observer(() => {
     const [store] = useState(new SongbookStore());
+    const [title, setTitle] = useState('');
+    const [author, setAuthor] = useState('');
 
     const handleAdd = useCallback(() => {
         store.putSong({
-            title: store.songs[store.songs.length - 1].title + 1,
-            author: store.songs[store.songs.length - 1].author + 1,
-            bpm: store.songs[store.songs.length - 1].bpm + 1
+            title,
+            author,
+            bpm: 150
         });
-    }, []);
+        setTitle('');
+        setAuthor('');
+    }, [title, author]);
 
     store.isLoading && setTimeout(() => store.setIsLoading(false), 1000);
 
@@ -51,16 +55,29 @@ export const Songbook: FC = observer(() => {
                     />
                 ))}
             </div>
+            <Textinput
+                placeholder="Type title"
+                size="m"
+                view="default"
+                value={title}
+                onChange={(event) => setTitle(event.target.value)}
+                style={{
+                    marginBottom: 'var(--space-m)'
+                }}
+            />
+            <Textinput
+                placeholder="Type author"
+                size="m"
+                view="default"
+                value={author}
+                onChange={(event) => setAuthor(event.target.value)}
+                style={{
+                    marginBottom: 'var(--space-m)'
+                }}
+            />
             <Button onClick={handleAdd} view="link" width="max" size="m">
                 Add song
             </Button>
-            {/* <Textinput
-                title="test"
-                size="m"
-                view="default"
-                value={value}
-                onChange={(event) => setValue(event.target.value)}
-            /> */}
         </div>
     );
 });

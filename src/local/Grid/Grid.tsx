@@ -41,6 +41,16 @@ export const Grid: FC = observer(() => {
         []
     );
 
+    const handleWidgetMouseDown = useCallback(
+        (id: string) => (event: MouseEvent) => {
+            if (store.draggableWidget && id !== store.draggableWidget) {
+                event.preventDefault();
+                store.setDraggableWidget(null);
+            }
+        },
+        []
+    );
+
     const widgetData: WidgetData[] = useMemo(
         () => [
             {
@@ -75,12 +85,7 @@ export const Grid: FC = observer(() => {
                 title={data.title}
                 onMove={handleWidgetMove(data.id)}
                 onHide={() => console.log(`widget ${data.id} is hidden`)}
-                onMouseDown={(event: MouseEvent) => {
-                    if (data.id !== store.draggableWidget) {
-                        event.preventDefault();
-                        store.setDraggableWidget(null);
-                    }
-                }}
+                onMouseDown={handleWidgetMouseDown(data.id)}
                 closed={data.closed}
                 draggable={store.draggableWidget === data.id}
                 blurred={Boolean(
