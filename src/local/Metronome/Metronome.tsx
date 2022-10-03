@@ -6,6 +6,7 @@ import React, {
     ChangeEvent,
     useEffect
 } from 'react';
+import { observer } from 'mobx-react';
 import useSound from 'use-sound';
 
 // yandex-ui
@@ -19,6 +20,7 @@ import { MetronomeVisualizer as Visualizer } from './Visualizer/Metronome-Visual
 
 // utils
 import { visualizeTicking, removeActiveTickClassName } from './Metronome.utils';
+import { useGlobalStore } from 'global/hooks/useGlobalStore';
 
 // assets
 import drums from 'assets/sounds/drums.mp3';
@@ -42,11 +44,12 @@ type SetIntervalID = ReturnType<typeof setInterval> | null;
 
 const COUNT_OF_SECONDS_IN_ONE_MINUTE = 60;
 
-export const Metronome: FC = () => {
+export const Metronome: FC = observer(() => {
+    const globalStore = useGlobalStore();
     const [timeSignature, setTimeSignature] = useState(
         TimeSignature.FourQuarters
     );
-    const [bpm, setBpm] = useState(150);
+
     const [intervalID, setIntervalID] = useState<SetIntervalID>(null);
 
     const [playSound] = useSound(drums, {
@@ -59,13 +62,14 @@ export const Metronome: FC = () => {
     });
 
     const startPlaying = useCallback(() => {
-        const frequency = (COUNT_OF_SECONDS_IN_ONE_MINUTE * 1000) / bpm;
+        const frequency =
+            (COUNT_OF_SECONDS_IN_ONE_MINUTE * 1000) / globalStore.bpm;
         const newIntervalID = setInterval(() => {
             playSound({ id: 'cowbell' });
             visualizeTicking(timeSignature);
         }, frequency);
         setIntervalID(newIntervalID);
-    }, [bpm, playSound, timeSignature]);
+    }, [globalStore.bpm, playSound, timeSignature]);
 
     useEffect(() => {
         if (intervalID) {
@@ -73,7 +77,7 @@ export const Metronome: FC = () => {
             startPlaying();
             removeActiveTickClassName();
         }
-    }, [bpm, timeSignature]);
+    }, [globalStore.bpm, timeSignature]);
 
     const handlePlayClick = useCallback(() => {
         if (intervalID) {
@@ -83,10 +87,10 @@ export const Metronome: FC = () => {
         } else {
             startPlaying();
         }
-    }, [intervalID, bpm, playSound, timeSignature]);
+    }, [intervalID, globalStore.bpm, playSound, timeSignature]);
 
     const handleSliderChange = useCallback((value: number) => {
-        setBpm(value);
+        globalStore.setBpm(value);
     }, []);
 
     const handleRadioChange = useCallback(
@@ -110,8 +114,8 @@ export const Metronome: FC = () => {
 
     return (
         <div className={cnMetronome()}>
-            <Text type="h2">{bpm}</Text>
-            <Slider value={bpm} onChange={handleSliderChange} />
+            <Text type="h2">{globalStore.bpm}</Text>
+            <Slider value={globalStore.bpm} onChange={handleSliderChange} />
             <Visualizer timeSignature={timeSignature} />
             <RadioButton
                 className={cnMetronomeRadio()}
@@ -131,4 +135,4 @@ export const Metronome: FC = () => {
             </Button>
         </div>
     );
-};
+});

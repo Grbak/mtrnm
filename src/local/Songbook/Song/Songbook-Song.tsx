@@ -7,6 +7,9 @@ import { Button } from '@yandex/ui/Button/desktop/bundle';
 import { Text } from 'global/Text';
 // import { IconButton } from 'global/IconButton';
 
+// utils
+import { useGlobalStore } from 'global/hooks/useGlobalStore';
+
 // types
 import { Song } from '../Songbook';
 
@@ -18,15 +21,19 @@ import './Songbook-Song.css';
 
 type SongbookSongProps = Song & {
     className?: string;
-    title: string;
-    author: string;
-    bpm: number;
 };
 
 export const SongbookSong: FC<SongbookSongProps> = memo(
-    ({ className, title, author }) => {
+    ({ className, title, author, bpm }) => {
+        const globalStore = useGlobalStore();
+
         const handleSongSet = useCallback(() => {
             console.log('Song was set');
+            globalStore.setSong({
+                title,
+                author,
+                bpm
+            });
         }, []);
 
         return (
