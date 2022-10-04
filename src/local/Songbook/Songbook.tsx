@@ -12,6 +12,9 @@ import { SongbookSong as Song } from './Song/Songbook-Song';
 // stores
 import { SongbookStore } from './Songbook.store';
 
+// types
+import { TimeSignature } from 'global/types';
+
 // const
 import { cnSongbook, cnSongbookList, cnSongbookLoader } from './Songbook.const';
 
@@ -22,6 +25,7 @@ export type Song = {
     title: string;
     author: string;
     bpm: number;
+    timeSignature: TimeSignature;
 };
 
 export const Songbook: FC = observer(() => {
@@ -33,7 +37,8 @@ export const Songbook: FC = observer(() => {
         store.putSong({
             title,
             author,
-            bpm: 150
+            bpm: 150,
+            timeSignature: TimeSignature.FourQuarters
         });
         setTitle('');
         setAuthor('');
@@ -52,6 +57,7 @@ export const Songbook: FC = observer(() => {
                         title={item.title}
                         author={item.author}
                         bpm={item.bpm}
+                        timeSignature={item.timeSignature}
                     />
                 ))}
             </div>
