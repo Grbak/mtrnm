@@ -24,7 +24,7 @@ type SongbookSongProps = Song & {
 };
 
 export const SongbookSong: FC<SongbookSongProps> = memo(
-    ({ className, title, author, bpm }) => {
+    ({ className, title, author, bpm, timeSignature }) => {
         const globalStore = useGlobalStore();
 
         const handleSongSet = useCallback(() => {
@@ -32,7 +32,8 @@ export const SongbookSong: FC<SongbookSongProps> = memo(
             globalStore.setSong({
                 title,
                 author,
-                bpm
+                bpm,
+                timeSignature
             });
         }, []);
 
