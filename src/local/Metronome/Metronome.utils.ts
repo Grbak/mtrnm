@@ -1,5 +1,5 @@
 // types
-import { TimeSignature } from './Metronome';
+import { TimeSignature } from 'global/types';
 
 export const activeTickClassName = 'Metronome-Tick_active';
 
