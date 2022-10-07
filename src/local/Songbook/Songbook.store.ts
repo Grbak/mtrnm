@@ -32,4 +32,9 @@ export class SongbookStore {
         this.songs.push(value);
         localStorage.setItem('songs', JSON.stringify(this.songs));
     };
+
+    deleteSong = (index: number) => {
+        this.songs.splice(index, 1);
+        localStorage.setItem('songs', JSON.stringify(this.songs));
+    };
 }

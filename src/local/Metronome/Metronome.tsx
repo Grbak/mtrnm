@@ -31,7 +31,12 @@ import PlayIcon from '../../assets/icons/play.svg';
 import PauseIcon from '../../assets/icons/pause.svg';
 
 // const
-import { cnMetronome, cnMetronomeRadio } from './Metronome.const';
+import {
+    cnMetronome,
+    cnMetronomeInfo,
+    cnMetronomeSong,
+    cnMetronomeRadio
+} from './Metronome.const';
 
 // styles
 import './Metronome.css';
@@ -106,10 +111,10 @@ export const Metronome: FC = observer(() => {
 
     return (
         <div className={cnMetronome()}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div className={cnMetronomeInfo()}>
                 <Text type="h2">{globalStore.bpm}</Text>
                 {globalStore.currentSong && (
-                    <div style={{ marginLeft: 'var(--space-m)' }}>
+                    <div className={cnMetronomeSong()}>
                         <Text type="body1" as="div">
                             {globalStore.currentSong.title}
                         </Text>

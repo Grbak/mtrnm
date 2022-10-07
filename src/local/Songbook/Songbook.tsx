@@ -34,7 +34,7 @@ export const Songbook: FC = observer(() => {
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
 
-    const handleAdd = useCallback(() => {
+    const handleSongAdd = useCallback(() => {
         store.putSong({
             title,
             author,
@@ -45,6 +45,13 @@ export const Songbook: FC = observer(() => {
         setAuthor('');
     }, [title, author]);
 
+    const handleSongDelete = useCallback(
+        (index: number) => () => {
+            store.deleteSong(index);
+        },
+        []
+    );
+
     // store.isLoading && setTimeout(() => store.setIsLoading(false), 1000);
 
     // return store.isLoading ? (
@@ -53,13 +60,14 @@ export const Songbook: FC = observer(() => {
     return (
         <div className={cnSongbook()}>
             <div className={cnSongbookList()}>
-                {store.songs.map((item: Song) => (
+                {store.songs.map((item: Song, index: number) => (
                     <Song
                         key={`${item.author}-${item.title}`}
                         title={item.title}
                         author={item.author}
                         bpm={item.bpm}
                         timeSignature={item.timeSignature}
+                        onDelete={handleSongDelete(index)}
                     />
                 ))}
             </div>
@@ -83,7 +91,7 @@ export const Songbook: FC = observer(() => {
                     marginBottom: 'var(--space-m)'
                 }}
             />
-            <Button onClick={handleAdd} view="link" width="max" size="m">
+            <Button onClick={handleSongAdd} view="link" width="max" size="m">
                 Add song
             </Button>
         </div>
