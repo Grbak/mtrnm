@@ -4,6 +4,15 @@
     gap: var(--space-m);
 }
 
+.Metronome-Info {
+    display: flex;
+    align-items: center;
+}
+
+.Metronome-Song {
+    margin-left: var(--space-m);
+}
+
 .Metronome-Radio {
     width: 100%;
 }
