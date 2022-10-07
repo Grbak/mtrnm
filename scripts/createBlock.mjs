@@ -7,7 +7,7 @@ const getPath = (fileName, ext) => `./${blockName}/${fileName}.${ext}`;
 
 const callback = (err) => {
     if (err) {
-        console.log('Error');
+        console.error('Error');
     } else {
         console.log('Success');
     }
