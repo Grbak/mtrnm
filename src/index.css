@@ -42,3 +42,11 @@ body {
     --color-brand-5: #ffefb5;
     --color-brand-6: #fef7de;
 }
+
+:root[data-theme="light"] {
+  --background-color: #f2f2f2;
+}
+
+:root[data-theme="dark"] {
+  --background-color: #2b3e51;
+}

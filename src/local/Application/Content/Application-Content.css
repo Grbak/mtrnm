@@ -1,7 +1,16 @@
 .Application-Content {
     flex: auto;
-    background: var(--color-level-2);
-    background: var(--color-test-1);
+    /* background: var(--color-level-2); */
+    /* background: var(--color-test-1); */
+    background: var(--background-color);
     border-bottom: 1px solid var(--color-test-4);
     border-top: 1px solid var(--color-test-4);
 }
+
+/* .Application-Content_theme_light {
+    background: var(--color-test-1);
+}
+
+.Application-Content_theme_dark {
+    background: red;
+} */

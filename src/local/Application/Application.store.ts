@@ -3,6 +3,7 @@ import { makeAutoObservable } from 'mobx';
 // types
 import { Song } from 'local/Songbook';
 import { TimeSignature } from 'global/types';
+import { ThemeStore } from './Theme.store';
 
 const DEFAULT_BPM_VALUE = 150;
 
@@ -55,4 +56,6 @@ export class ApplicationStore {
         localStorage.setItem('timeSignature', this.timeSignature);
         localStorage.removeItem('currentSong');
     };
+
+    themeStore = new ThemeStore();
 }
