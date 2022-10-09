@@ -12,7 +12,7 @@ import { Popup } from 'global/Popup';
 import { useGlobalStore } from 'global/hooks/useGlobalStore';
 
 // types
-import { Theme } from '../Theme.store';
+import { Theme } from 'global/stores/Theme.store';
 
 // const
 import {
