@@ -8,7 +8,7 @@ const blockName = 'Songbook';
 export const cnSongbook = cn(blockName);
 export const cnSongbookList = cn(blockName, 'List');
 export const cnSongbookSong = cn(blockName, 'Song');
-export const cnSongbookSongTitle = cn(blockName, 'SongTitle');
+export const cnSongbookSongInfo = cn(blockName, 'SongInfo');
 // export const cnSongbookLoader = cn(blockName, 'Loader');
 
 export const defaultSongs: Song[] = [

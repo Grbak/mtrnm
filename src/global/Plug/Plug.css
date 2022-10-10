@@ -12,7 +12,8 @@
 }
 
 .Plug-Title {
-    color: black;
+    /* color: black; */
+    color: var(--font);
     margin-top: var(--space-m);
 }
 
