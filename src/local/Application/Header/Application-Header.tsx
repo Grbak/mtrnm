@@ -1,10 +1,18 @@
 import React, { useRef, useState, FC } from 'react';
+import { observer } from 'mobx-react';
 
 // yandex-ui
 import { Button } from '@yandex/ui/Button/desktop/bundle';
+import { Tumbler } from '@yandex/ui/Tumbler/desktop/bundle';
 
 // components
 import { Popup } from 'global/Popup';
+
+// uitls
+import { useGlobalStore } from 'global/hooks/useGlobalStore';
+
+// types
+import { Theme } from 'global/stores/Theme.store';
 
 // const
 import {
@@ -15,13 +23,20 @@ import {
 // styles
 import './Application-Header.css';
 
-export const ApplicationHeader: FC = () => {
+export const ApplicationHeader: FC = observer(() => {
+    const globalStore = useGlobalStore();
     const [showPopup, setShowPopup] = useState(false);
     const langAnchor = useRef();
     return (
         <div className={cnApplicationHeader()}>
             mtrnm
             <div className={cnApplicationHeaderAddon()}>
+                <Tumbler
+                    checked={globalStore.themeStore.theme === Theme.Dark}
+                    onChange={globalStore.themeStore.toggleTheme}
+                    view="default"
+                    size="m"
+                />
                 <Button
                     view="clear"
                     size="m"
@@ -42,4 +57,4 @@ export const ApplicationHeader: FC = () => {
             </div>
         </div>
     );
-};
+});

@@ -14,7 +14,7 @@ import { useGlobalStore } from 'global/hooks/useGlobalStore';
 import { Song } from '../Songbook';
 
 // const
-import { cnSongbookSong, cnSongbookSongTitle } from '../Songbook.const';
+import { cnSongbookSong, cnSongbookSongInfo } from '../Songbook.const';
 
 // styles
 import './Songbook-Song.css';
@@ -39,10 +39,7 @@ export const SongbookSong: FC<SongbookSongProps> = memo(
 
         return (
             <div className={cnSongbookSong(null, [className])}>
-                <div
-                    className={cnSongbookSongTitle()}
-                    style={{ display: 'flex', flexDirection: 'column' }}
-                >
+                <div className={cnSongbookSongInfo()}>
                     <Text type="body1">{title}</Text>
                     <Text type="body2">{author}</Text>
                 </div>
