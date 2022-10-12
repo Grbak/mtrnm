@@ -1,5 +1,6 @@
 import React, { FC, useCallback, useState } from 'react';
 import { observer } from 'mobx-react';
+import { useTranslation } from 'react-i18next';
 
 // yandex-ui
 import { Textinput } from '@yandex/ui/Textinput/desktop/bundle';
@@ -30,6 +31,7 @@ export type Song = {
 };
 
 export const Songbook: FC = observer(() => {
+    const { t } = useTranslation();
     const [store] = useState(new SongbookStore());
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
@@ -72,7 +74,7 @@ export const Songbook: FC = observer(() => {
                 ))}
             </div>
             <Textinput
-                placeholder="Type title"
+                placeholder={t('Type title')}
                 size="m"
                 view="default"
                 value={title}
@@ -82,7 +84,7 @@ export const Songbook: FC = observer(() => {
                 }}
             />
             <Textinput
-                placeholder="Type author"
+                placeholder={t('Type author')}
                 size="m"
                 view="default"
                 value={author}
@@ -92,7 +94,7 @@ export const Songbook: FC = observer(() => {
                 }}
             />
             <Button onClick={handleSongAdd} view="link" width="max" size="m">
-                Add song
+                {t('Add song')}
             </Button>
         </div>
     );

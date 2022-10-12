@@ -6,6 +6,7 @@ import React, {
     FC,
     MouseEventHandler
 } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // components
 import { IconButton } from 'global/IconButton';
@@ -50,6 +51,7 @@ export const Widget: FC<WidgetProps> = ({
 }) => {
     const [showPopup, setShowPopup] = useState(false);
     const anchor = useRef(null);
+    const { t } = useTranslation();
 
     const handlePopupOpen = useCallback(() => {
         setShowPopup(true);
@@ -66,11 +68,11 @@ export const Widget: FC<WidgetProps> = ({
 
     const popupItems = [
         {
-            content: 'Move',
+            content: t('Move'),
             onClick: handleMove
         },
         {
-            content: 'Hide',
+            content: t('Hide'),
             onClick: onHide
         }
     ];
@@ -83,8 +85,10 @@ export const Widget: FC<WidgetProps> = ({
             {closed ? (
                 <Plug
                     className={cnWidgetPlug()}
-                    title="This widget is still under development"
-                    subtitle="You will be able to see statistics of your lessons soon"
+                    title={t('This widget is still under development')}
+                    subtitle={t(
+                        'You will be able to see statistics of your lessons soon'
+                    )}
                 />
             ) : (
                 <>

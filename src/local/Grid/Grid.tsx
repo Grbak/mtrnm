@@ -5,6 +5,7 @@ import {
     WidthProvider,
     Layout
 } from 'react-grid-layout';
+import { useTranslation } from 'react-i18next';
 
 // components
 import { Widget } from 'global/Widget';
@@ -26,6 +27,7 @@ const GridLayout = WidthProvider(ResponsiveGridLayout);
 
 export const Grid: FC = observer(() => {
     const [store] = useState(new GridStore());
+    const { t } = useTranslation();
 
     const handleBreakpointChange = useCallback((breakpoint: Breakpoint) => {
         store.changeBreakpoint(breakpoint);
@@ -55,18 +57,18 @@ export const Grid: FC = observer(() => {
         () => [
             {
                 id: 'metronome',
-                title: 'Metronome',
+                title: t('Metronome'),
                 content: <Metronome />
             },
             {
                 id: 'statistics',
-                title: 'Statistics',
+                title: t('Statistics'),
                 content: <div />,
                 closed: true
             },
             {
                 id: 'songbook',
-                title: 'Songbook',
+                title: t('Songbook'),
                 content: <Songbook />
             },
             {
@@ -76,7 +78,7 @@ export const Grid: FC = observer(() => {
                 closed: true
             }
         ],
-        []
+        [t]
     );
 
     const widgetElements = widgetData.map((data: WidgetData) => (
