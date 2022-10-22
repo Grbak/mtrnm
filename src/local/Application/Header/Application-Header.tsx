@@ -10,7 +10,7 @@ import { Tumbler } from '@yandex/ui/Tumbler/desktop/bundle';
 import { Popup } from 'global/Popup';
 
 // uitls
-import { useGlobalStore } from 'global/hooks/useGlobalStore';
+import { useThemeStore } from 'global/hooks/useThemeStore';
 
 // types
 import { Theme } from 'global/stores/Theme.store';
@@ -25,7 +25,7 @@ import {
 import './Application-Header.css';
 
 export const ApplicationHeader: FC = observer(() => {
-    const globalStore = useGlobalStore();
+    const themeStore = useThemeStore();
     const [showPopup, setShowPopup] = useState(false);
     const langAnchor = useRef();
     const { t, i18n } = useTranslation();
@@ -34,8 +34,8 @@ export const ApplicationHeader: FC = observer(() => {
             mtrnm
             <div className={cnApplicationHeaderAddon()}>
                 <Tumbler
-                    checked={globalStore.themeStore.theme === Theme.Dark}
-                    onChange={globalStore.themeStore.toggleTheme}
+                    checked={themeStore.theme === Theme.Dark}
+                    onChange={themeStore.toggleTheme}
                     view="default"
                     size="m"
                 />

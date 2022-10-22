@@ -1,6 +1,10 @@
 import React, { FC } from 'react';
 import i18n from 'i18next';
+import { observer } from 'mobx-react';
 import { useTranslation, initReactI18next } from 'react-i18next';
+
+// // yandex-ui
+import { cnTheme } from '@yandex/ui/Theme';
 
 // components
 import { ApplicationContent as Content } from './Content/Application-Content';
@@ -8,12 +12,16 @@ import { ApplicationHeader as Header } from './Header/Application-Header';
 
 // utils
 import { GlobalStoreProvider } from 'global/stores/Global.store';
+import { ThemeStoreProvider } from 'global/stores/Theme.store';
+import { useThemeStore } from 'global/hooks/useThemeStore';
 
 // const
 import { cnApplication, cnApplicationFooter } from './Application.const';
 
 // styles
 import './Application.css';
+import '../../themes/dark.css';
+import '../../themes/light.css';
 
 i18n.use(initReactI18next).init({
     resources: {
@@ -49,16 +57,20 @@ i18n.use(initReactI18next).init({
     }
 });
 
-export const Application: FC = () => {
+export const Application: FC = observer(() => {
     const { t } = useTranslation();
+    const themeStore = useThemeStore();
+    const themeClassName = cnTheme({ color: themeStore.theme });
 
     return (
-        <GlobalStoreProvider>
-            <div className={cnApplication()}>
-                <Header />
-                <Content />
-                <div className={cnApplicationFooter()}>{t('Footer')}</div>
-            </div>
-        </GlobalStoreProvider>
+        <ThemeStoreProvider>
+            <GlobalStoreProvider>
+                <div className={cnApplication(null, [themeClassName])}>
+                    <Header />
+                    <Content />
+                    <div className={cnApplicationFooter()}>{t('Footer')}</div>
+                </div>
+            </GlobalStoreProvider>
+        </ThemeStoreProvider>
     );
-};
+});
