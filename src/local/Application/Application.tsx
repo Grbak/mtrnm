@@ -1,10 +1,16 @@
-import React, { FC } from 'react';
+import React, { FC, useRef, useLayoutEffect } from 'react';
 import i18n from 'i18next';
 import { observer } from 'mobx-react';
 import { useTranslation, initReactI18next } from 'react-i18next';
 
 // // yandex-ui
-import { cnTheme } from '@yandex/ui/Theme';
+import {
+    cnTheme,
+    configureRootTheme
+    // Theme as YandexTheme
+} from '@yandex/ui/Theme';
+import { theme as lightYandexTheme } from '@yandex/ui/Theme/presets/default';
+// import { theme as darkYandexTheme } from '@yandex/ui/Theme/presets/inverse';
 
 // components
 import { ApplicationContent as Content } from './Content/Application-Content';
@@ -12,6 +18,7 @@ import { ApplicationHeader as Header } from './Header/Application-Header';
 
 // utils
 import { GlobalStoreProvider } from 'global/stores/Global.store';
+// import { Theme, ThemeStoreProvider } from 'global/stores/Theme.store';
 import { ThemeStoreProvider } from 'global/stores/Theme.store';
 import { useThemeStore } from 'global/hooks/useThemeStore';
 
@@ -58,14 +65,36 @@ i18n.use(initReactI18next).init({
 });
 
 export const Application: FC = observer(() => {
+    const rootRef = useRef(null);
     const { t } = useTranslation();
     const themeStore = useThemeStore();
     const themeClassName = cnTheme({ color: themeStore.theme });
 
+    useLayoutEffect(() => {
+        // const getYandexTheme = (): YandexTheme => {
+        //     switch (themeStore.theme) {
+        //         case Theme.Dark:
+        //             return darkYandexTheme;
+        //         case Theme.Light:
+        //         default:
+        //             return lightYandexTheme;
+        //     }
+        // };
+
+        configureRootTheme({
+            // theme: getYandexTheme(),
+            theme: lightYandexTheme,
+            root: rootRef.current
+        });
+    }, [themeStore.theme, rootRef]);
+
     return (
         <ThemeStoreProvider>
             <GlobalStoreProvider>
-                <div className={cnApplication(null, [themeClassName])}>
+                <div
+                    className={cnApplication(null, [themeClassName])}
+                    ref={rootRef}
+                >
                     <Header />
                     <Content />
                     <div className={cnApplicationFooter()}>{t('Footer')}</div>

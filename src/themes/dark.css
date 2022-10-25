@@ -5,4 +5,7 @@
   --button-fill-color: purple;
   --color-control-typo-primary: red;
   --button-view-action-fill-color-hovered: var(--color-level-2);
+  --popup-view-default-fill-color: red;
+  /* --textinput-view-default-fill-color-base: rgb(68, 64, 64); */
+  /* --button-view-default-fill-color-hovered: rgb(68, 64, 64); */
 }
