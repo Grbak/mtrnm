@@ -1,0 +1,22 @@
+.Metronome-Visualizer {
+    display: flex;
+    gap: var(--space-m);
+}
+
+.Metronome-Tick {
+    height: 32px;
+    flex: 1;
+    /* background: var(--color-test-1); */
+    background: var(--background-color);
+    border-radius: var(--round-s);
+}
+
+.Metronome-Tick_active {
+    background: var(--color-test-5);
+    /* background: var(--color-tick); */
+}
+
+/* .Metronome-Tick_active:first-child {
+    transform: scale(1.25);
+    background: var(--color-test-6);
+} */

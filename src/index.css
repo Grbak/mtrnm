@@ -48,6 +48,8 @@ body {
   --test-1: #fff;
   --test-2: rgb(230, 230, 230);
   --font: black;
+  --blured-widget-color: rgba(255, 255, 255, 0.6);
+  --color-tick: var(--color-test-5);
 }
 
 :root[data-theme="dark"] {
@@ -56,4 +58,6 @@ body {
   --test-1: #5f5c5c;
   --test-2: rgba(255, 255, 255, 0.1);
   --font: #fff;
+  --blured-widget-color: rgba(255, 255, 255, 0.1);
+  --color-tick: red;
 }

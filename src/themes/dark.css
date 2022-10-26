@@ -1,11 +1,30 @@
 .Theme_color_dark {
-  --color-controls-type-action-typo-base: yellow;
+  /* --color-controls-type-action-typo-base: yellow;
   --color-controls-type-action-fill-color-base: blue;
   --color-controls-type-action-fill-color-hover: green;
   --button-fill-color: purple;
-  --color-control-typo-primary: red;
-  --button-view-action-fill-color-hovered: var(--color-level-2);
+  --color-control-typo-primary: red; */
+  --button-view-default-fill-color-base: rgb(68, 64, 64);
+  --button-view-link-fill-color-base: transparent;
+  --button-view-clear-typo-color-base: #fff;
+  --button-view-default-typo-color-base: #fff;
+  --button-view-default-typo-color-hovered: #fff;
+  --button-view-clear-typo-color-base: red;
+  /* --button-view-action-fill-color-hovered: var(--color-level-2); */
   --popup-view-default-fill-color: red;
+  /* --textinput-view-default-fill-color-base: rgb(97, 93, 93); */
   /* --textinput-view-default-fill-color-base: rgb(68, 64, 64); */
-  /* --button-view-default-fill-color-hovered: rgb(68, 64, 64); */
+    --textinput-view-default-fill-color-base: transparent;
+  --textinput-view-default-fill-color-hovered: transparent;
+  --textinput-view-default-border-color-base: rgba(255, 255, 255, 0.1);
+  --textinput-view-default-border-color-hovered: red;
+  --textinput-view-default-border-color-focused: green;
+  --button-view-default-fill-color-hovered: rgb(68, 64, 64);
+  --textinput-view-default-typo-color-base: #fff;
+  --radio-button-view-default-fill-color-base: rgb(68, 64, 64);
+  --radio-button-view-default-fill-color-checked-base: #5f5c5c;
+  --radio-button-view-default-typo-color-base: #fff;
+  --radio-button-view-default-typo-color-checked-base: #fff;
+  --radio-button-view-default-typo-color-hovered: #fff;
+  /* --tumbler-view-default-button-fill-color-base: var(--test-1); */
 }

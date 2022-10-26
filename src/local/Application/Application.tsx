@@ -1,15 +1,15 @@
-import React, { FC, useRef, useLayoutEffect } from 'react';
+import React, { FC, useRef } from 'react';
 import i18n from 'i18next';
 import { observer } from 'mobx-react';
 import { useTranslation, initReactI18next } from 'react-i18next';
 
 // // yandex-ui
 import {
-    cnTheme,
-    configureRootTheme
+    cnTheme
+    // configureRootTheme
     // Theme as YandexTheme
 } from '@yandex/ui/Theme';
-import { theme as lightYandexTheme } from '@yandex/ui/Theme/presets/default';
+// import { theme as lightYandexTheme } from '@yandex/ui/Theme/presets/default';
 // import { theme as darkYandexTheme } from '@yandex/ui/Theme/presets/inverse';
 
 // components
@@ -70,23 +70,23 @@ export const Application: FC = observer(() => {
     const themeStore = useThemeStore();
     const themeClassName = cnTheme({ color: themeStore.theme });
 
-    useLayoutEffect(() => {
-        // const getYandexTheme = (): YandexTheme => {
-        //     switch (themeStore.theme) {
-        //         case Theme.Dark:
-        //             return darkYandexTheme;
-        //         case Theme.Light:
-        //         default:
-        //             return lightYandexTheme;
-        //     }
-        // };
+    // useLayoutEffect(() => {
+    //     // const getYandexTheme = (): YandexTheme => {
+    //     //     switch (themeStore.theme) {
+    //     //         case Theme.Dark:
+    //     //             return darkYandexTheme;
+    //     //         case Theme.Light:
+    //     //         default:
+    //     //             return lightYandexTheme;
+    //     //     }
+    //     // };
 
-        configureRootTheme({
-            // theme: getYandexTheme(),
-            theme: lightYandexTheme,
-            root: rootRef.current
-        });
-    }, [themeStore.theme, rootRef]);
+    //     configureRootTheme({
+    //         // theme: getYandexTheme(),
+    //         theme: lightYandexTheme,
+    //         root: rootRef.current
+    //     });
+    // }, [themeStore.theme, rootRef]);
 
     return (
         <ThemeStoreProvider>

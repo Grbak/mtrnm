@@ -59,7 +59,7 @@
 
 .Widget_blurred::after {
     content: '';
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--blured-widget-color);
     /* background: rgba(0, 0, 0, 0.06); */
     position: absolute;
     border-radius: inherit;

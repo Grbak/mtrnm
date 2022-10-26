@@ -1,9 +1,9 @@
 .Theme_color_light {
-  --color-controls-type-action-typo-base: yellow;
+  /* --color-controls-type-action-typo-base: yellow;
   --color-controls-type-action-fill-color-base: blue;
   --color-controls-type-action-fill-color-hover: green;
   --button-fill-color: purple;
-  --color-control-typo-primary: red;
-  --button-view-action-fill-color-hovered: var(--color-primary-high);
+  --color-control-typo-primary: red; */
+  /* --button-view-action-fill-color-hovered: var(--color-primary-high); */
   /* --button-view-action-fill-color-hovered: var(--color-level-2); */
 }

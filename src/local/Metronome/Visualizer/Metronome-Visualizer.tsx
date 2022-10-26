@@ -4,10 +4,13 @@ import React, { FC } from 'react';
 import { getTicksCountFromTimeSignature } from '../Metronome.utils';
 
 // types
-import { TimeSignature } from '../Metronome';
+import { TimeSignature } from 'global/types';
 
 // const
 import { cnMetronomeVisualizer, cnMetronomeTick } from '../Metronome.const';
+
+// styles
+import './Metronome-Visualizer.css';
 
 type MetronomeVisualizerProps = {
     timeSignature: TimeSignature;
