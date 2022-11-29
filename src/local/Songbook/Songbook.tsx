@@ -3,12 +3,11 @@ import { observer } from 'mobx-react';
 import { useTranslation } from 'react-i18next';
 
 // yandex-ui
-import { Textinput } from '@yandex/ui/Textinput/desktop/bundle';
 import { Button } from '@yandex/ui/Button/desktop/bundle';
-// import { Spin } from '@yandex/ui/Spin/desktop/bundle';
 
 // components
 import { SongbookSong as Song } from './Song/Songbook-Song';
+import { SongbookAddSongForm as AddSongForm } from './AddSongForm/Songbook-AddSongForm';
 
 // stores
 import { SongbookStore } from './Songbook.store';
@@ -33,19 +32,6 @@ export type Song = {
 export const Songbook: FC = observer(() => {
     const { t } = useTranslation();
     const [store] = useState(new SongbookStore());
-    const [title, setTitle] = useState('');
-    const [author, setAuthor] = useState('');
-
-    const handleSongAdd = useCallback(() => {
-        store.putSong({
-            title,
-            author,
-            bpm: 150,
-            timeSignature: TimeSignature.FourQuarters
-        });
-        setTitle('');
-        setAuthor('');
-    }, [title, author]);
 
     const handleSongDelete = useCallback(
         (index: number) => () => {
@@ -61,41 +47,32 @@ export const Songbook: FC = observer(() => {
     // ) : (
     return (
         <div className={cnSongbook()}>
-            <div className={cnSongbookList()}>
-                {store.songs.map((item: Song, index: number) => (
-                    <Song
-                        key={`${item.author}-${item.title}`}
-                        title={item.title}
-                        author={item.author}
-                        bpm={item.bpm}
-                        timeSignature={item.timeSignature}
-                        onDelete={handleSongDelete(index)}
-                    />
-                ))}
-            </div>
-            <Textinput
-                placeholder={t('Type title')}
-                size="m"
-                view="default"
-                value={title}
-                onChange={(event) => setTitle(event.target.value)}
-                style={{
-                    marginBottom: 'var(--space-m)'
-                }}
-            />
-            <Textinput
-                placeholder={t('Type author')}
-                size="m"
-                view="default"
-                value={author}
-                onChange={(event) => setAuthor(event.target.value)}
-                style={{
-                    marginBottom: 'var(--space-m)'
-                }}
-            />
-            <Button onClick={handleSongAdd} view="link" width="max" size="m">
-                {t('Add song')}
-            </Button>
+            {store.isAddSongFormOpened ? (
+                <AddSongForm store={store} />
+            ) : (
+                <>
+                    <div className={cnSongbookList()}>
+                        {store.songs.map((item: Song, index: number) => (
+                            <Song
+                                key={`${item.author}-${item.title}`}
+                                title={item.title}
+                                author={item.author}
+                                bpm={item.bpm}
+                                timeSignature={item.timeSignature}
+                                onDelete={handleSongDelete(index)}
+                            />
+                        ))}
+                    </div>
+                    <Button
+                        width="max"
+                        view="link"
+                        size="m"
+                        onClick={() => store.setIsAddSongFormOpened(true)}
+                    >
+                        {t('Add song')}
+                    </Button>
+                </>
+            )}
         </div>
     );
     // );

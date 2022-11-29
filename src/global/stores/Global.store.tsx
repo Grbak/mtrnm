@@ -6,7 +6,7 @@ import { observer } from 'mobx-react';
 import { Song } from 'local/Songbook';
 import { TimeSignature } from 'global/types';
 
-const DEFAULT_BPM_VALUE = 150;
+export const DEFAULT_BPM_VALUE = 150;
 
 export class GlobalStore {
     constructor() {

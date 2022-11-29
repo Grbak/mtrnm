@@ -20,6 +20,12 @@ export class SongbookStore {
         this.search = value;
     };
 
+    isAddSongFormOpened = false;
+
+    setIsAddSongFormOpened = (value: boolean) => {
+        this.isAddSongFormOpened = value;
+    };
+
     // isLoading = true;
 
     // setIsLoading = (value: boolean) => {

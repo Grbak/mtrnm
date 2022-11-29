@@ -30,6 +30,29 @@ import './Application.css';
 import '../../themes/dark.css';
 import '../../themes/light.css';
 
+const translation = {
+    Metronome: 'Метроном',
+    Statisticts: 'Статистика',
+    Songbook: 'Сонгбук',
+    Footer: 'Футер',
+    Move: 'Переместить',
+    Hide: 'Cкрыть',
+    Language: 'Язык',
+    'Type title': 'Введите название',
+    'Type author': 'Введите автора',
+    'Add song': 'Добавить песню',
+    'Log out': 'Выход',
+    'This widget is still under development':
+        'Этот виджет пока находится в разработке',
+    'You will be able to see statistics of your lessons soon':
+        'Скоро вы сможете увидеть здесь статистику своих занятий',
+    'Soon you will be able to add new songs via the search bar below:':
+        'Скоро вы сможете добавлять новые песни через поисковую строку ниже:',
+    'Now you can do it by manually filling in the following fields:':
+        'Сейчас вы можете сделать это, вручную заполнив следующие поля:',
+    'Search...': 'Поиск...'
+};
+
 i18n.use(initReactI18next).init({
     resources: {
         // en: {
@@ -38,23 +61,7 @@ i18n.use(initReactI18next).init({
         //     }
         // },
         ru: {
-            translation: {
-                Metronome: 'Метроном',
-                Statisticts: 'Статистика',
-                Songbook: 'Сонгбук',
-                Footer: 'Футер',
-                Move: 'Переместить',
-                Hide: 'Cкрыть',
-                Language: 'Язык',
-                'Type title': 'Введите название',
-                'Type author': 'Введите автора',
-                'Add song': 'Добавить песню',
-                'Log out': 'Выход',
-                'This widget is still under development':
-                    'Этот виджет пока находится в разработке',
-                'You will be able to see statistics of your lessons soon':
-                    'Скоро вы сможете увидеть здесь статистику своих занятий'
-            }
+            translation
         }
     },
     lng: 'en',

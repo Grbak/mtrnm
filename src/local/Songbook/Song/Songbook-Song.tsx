@@ -14,7 +14,11 @@ import { useGlobalStore } from 'global/hooks/useGlobalStore';
 import { Song } from '../Songbook';
 
 // const
-import { cnSongbookSong, cnSongbookSongInfo } from '../Songbook.const';
+import {
+    cnSongbookSong,
+    cnSongbookSongInfo,
+    cnSongbookSongButton
+} from '../Songbook.const';
 
 // styles
 import './Songbook-Song.css';
@@ -44,7 +48,12 @@ export const SongbookSong: FC<SongbookSongProps> = memo(
                     <Text type="body2">{author}</Text>
                 </div>
                 <div>
-                    <Button view="link" size="m" onClick={handleSet}>
+                    <Button
+                        className={cnSongbookSongButton()}
+                        view="link"
+                        size="m"
+                        onClick={handleSet}
+                    >
                         <svg
                             width="4"
                             height="18"
@@ -58,7 +67,12 @@ export const SongbookSong: FC<SongbookSongProps> = memo(
                             />
                         </svg>
                     </Button>
-                    <Button view="default" size="m" onClick={onDelete}>
+                    <Button
+                        className={cnSongbookSongButton()}
+                        view="default"
+                        size="m"
+                        onClick={onDelete}
+                    >
                         <svg
                             width="4"
                             height="18"

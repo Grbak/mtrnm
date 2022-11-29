@@ -12,7 +12,7 @@ export class ThemeStore {
         makeAutoObservable(this);
     }
 
-    theme: Theme = Theme.Dark;
+    theme: Theme = Theme.Light;
 
     toggleTheme = () => {
         this.theme = this.theme === Theme.Light ? Theme.Dark : Theme.Light;
