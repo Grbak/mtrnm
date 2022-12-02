@@ -4,3 +4,7 @@
     color: var(--font);
     margin-bottom: var(--space-m);
 }
+
+.Songbook-AddSongFormInput {
+    margin-bottom: var(--space-m);
+}

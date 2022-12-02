@@ -1,4 +1,5 @@
-import React, { FC, memo, useCallback } from 'react';
+import React, { FC, useCallback } from 'react';
+import { observer } from 'mobx-react';
 
 // yandex-ui
 import { Button } from '@yandex/ui/Button/desktop/bundle';
@@ -9,6 +10,7 @@ import { Text } from 'global/Text';
 
 // utils
 import { useGlobalStore } from 'global/hooks/useGlobalStore';
+import { useThemeStore } from 'global/hooks/useThemeStore';
 
 // types
 import { Song } from '../Songbook';
@@ -28,9 +30,10 @@ type SongbookSongProps = Song & {
     onDelete: () => void;
 };
 
-export const SongbookSong: FC<SongbookSongProps> = memo(
+export const SongbookSong: FC<SongbookSongProps> = observer(
     ({ className, title, author, bpm, timeSignature, onDelete }) => {
         const globalStore = useGlobalStore();
+        const themeStore = useThemeStore();
 
         const handleSet = useCallback(() => {
             globalStore.setSong({
@@ -50,6 +53,7 @@ export const SongbookSong: FC<SongbookSongProps> = memo(
                 <div>
                     <Button
                         className={cnSongbookSongButton()}
+                        key={`set-${title}-song-button-${themeStore.theme}`}
                         view="link"
                         size="m"
                         onClick={handleSet}
@@ -70,6 +74,7 @@ export const SongbookSong: FC<SongbookSongProps> = memo(
                     </Button>
                     <Button
                         className={cnSongbookSongButton()}
+                        key={`delete-${title}-song-button-${themeStore.theme}`}
                         view="default"
                         size="m"
                         onClick={onDelete}

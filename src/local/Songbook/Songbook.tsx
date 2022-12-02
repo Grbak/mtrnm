@@ -12,6 +12,9 @@ import { SongbookAddSongForm as AddSongForm } from './AddSongForm/Songbook-AddSo
 // stores
 import { SongbookStore } from './Songbook.store';
 
+// utils
+import { useThemeStore } from 'global/hooks/useThemeStore';
+
 // types
 import { TimeSignature } from 'global/types';
 
@@ -31,6 +34,7 @@ export type Song = {
 
 export const Songbook: FC = observer(() => {
     const { t } = useTranslation();
+    const themeStore = useThemeStore();
     const [store] = useState(new SongbookStore());
 
     const handleSongDelete = useCallback(
@@ -64,6 +68,7 @@ export const Songbook: FC = observer(() => {
                         ))}
                     </div>
                     <Button
+                        key={`new-song-button-${themeStore.theme}`}
                         width="max"
                         view="link"
                         size="m"

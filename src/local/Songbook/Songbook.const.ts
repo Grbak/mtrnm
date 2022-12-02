@@ -11,6 +11,7 @@ export const cnSongbookSong = cn(blockName, 'Song');
 export const cnSongbookSongInfo = cn(blockName, 'SongInfo');
 export const cnSongbookSongButton = cn(blockName, 'SongButton');
 export const cnSongbookAddSongFormText = cn(blockName, 'AddSongFormText');
+export const cnSongbookAddSongFormInput = cn(blockName, 'AddSongFormInput');
 // export const cnSongbookLoader = cn(blockName, 'Loader');
 
 export const defaultSongs: Song[] = [
