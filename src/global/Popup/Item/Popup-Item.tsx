@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC } from 'react';
 
 // components
 import { Text } from 'global/Text';
@@ -15,13 +15,9 @@ export type PopupItemProps = {
 };
 
 export const PopupItem: FC<PopupItemProps> = ({ content, onClick }) => {
-    const handleClick = useCallback(() => {
-        onClick && onClick();
-    }, []);
-
     return (
-        <div className={cnPopupItem()} onClick={handleClick}>
-            <Text type="body1">{content}</Text>
-        </div>
+        <Text className={cnPopupItem()} onClick={onClick} type="body1" as="div">
+            {content}
+        </Text>
     );
 };

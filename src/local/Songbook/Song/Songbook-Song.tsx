@@ -55,6 +55,7 @@ export const SongbookSong: FC<SongbookSongProps> = memo(
                         onClick={handleSet}
                     >
                         <svg
+                            style={{ marginTop: '8px' }}
                             width="4"
                             height="18"
                             fill="none"
@@ -74,6 +75,7 @@ export const SongbookSong: FC<SongbookSongProps> = memo(
                         onClick={onDelete}
                     >
                         <svg
+                            style={{ marginTop: '8px' }}
                             width="4"
                             height="18"
                             fill="none"

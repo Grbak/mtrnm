@@ -1,4 +1,4 @@
-import React, { useRef, useState, FC } from 'react';
+import React, { useRef, useState, FC, useCallback, useMemo } from 'react';
 import { observer } from 'mobx-react';
 import { useTranslation } from 'react-i18next';
 
@@ -26,9 +26,38 @@ import './Application-Header.css';
 
 export const ApplicationHeader: FC = observer(() => {
     const themeStore = useThemeStore();
-    const [showPopup, setShowPopup] = useState(false);
+    const [showLangPopup, setShowLangPopup] = useState(false);
     const langAnchor = useRef();
     const { t, i18n } = useTranslation();
+
+    const openLangPopup = useCallback(() => {
+        setShowLangPopup(true);
+    }, []);
+
+    const closeLangPopup = useCallback(() => {
+        setShowLangPopup(false);
+    }, []);
+
+    const langItems = useMemo(
+        () => [
+            {
+                content: 'Русский',
+                onClick: () => {
+                    i18n.changeLanguage('ru');
+                    closeLangPopup();
+                }
+            },
+            {
+                content: 'English',
+                onClick: () => {
+                    i18n.changeLanguage('en');
+                    closeLangPopup();
+                }
+            }
+        ],
+        []
+    );
+
     return (
         <div className={cnApplicationHeader()}>
             mtrnm
@@ -43,23 +72,19 @@ export const ApplicationHeader: FC = observer(() => {
                     view="clear"
                     size="m"
                     controlRef={langAnchor}
-                    onClick={() => {
-                        setShowPopup(true);
-                        const newLang = i18n.language === 'en' ? 'ru' : 'en';
-                        i18n.changeLanguage(newLang);
-                    }}
+                    onClick={openLangPopup}
                 >
                     {t('Language')}
                 </Button>
                 <Popup
-                    visible={showPopup}
-                    onClose={() => setShowPopup(false)}
+                    visible={showLangPopup}
+                    onClose={closeLangPopup}
                     anchor={langAnchor}
-                    items={[]}
+                    items={langItems}
                 />
-                <Button view="default" size="m">
+                {/* <Button view="default" size="m">
                     {t('Log out')}
-                </Button>
+                </Button> */}
             </div>
         </div>
     );
