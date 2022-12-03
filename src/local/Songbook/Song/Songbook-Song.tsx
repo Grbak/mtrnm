@@ -50,7 +50,7 @@ export const SongbookSong: FC<SongbookSongProps> = observer(
                     <Text type="body1">{title}</Text>
                     <Text type="body2">{author}</Text>
                 </div>
-                <div>
+                <div style={{ flexShrink: 0 }}>
                     <Button
                         className={cnSongbookSongButton()}
                         key={`set-${title}-song-button-${themeStore.theme}`}

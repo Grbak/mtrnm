@@ -16,6 +16,12 @@ export const cnSongbookAddSongFormInput = cn(blockName, 'AddSongFormInput');
 
 export const defaultSongs: Song[] = [
     {
+        title: 'Old Yellow Bricks',
+        author: 'Arctic Monkeys',
+        bpm: 135,
+        timeSignature: TimeSignature.FourQuarters
+    },
+    {
         title: 'Freaks',
         author: 'Surf Curse',
         bpm: 180,
@@ -34,9 +40,28 @@ export const defaultSongs: Song[] = [
         timeSignature: TimeSignature.FourQuarters
     },
     {
-        title: 'Radiohead',
-        author: 'Fake Plastic Trees',
+        title: 'Fake Plastic Trees',
+        author: 'Radiohead',
         bpm: 100,
+        timeSignature: TimeSignature.FourQuarters
+    },
+    // {
+    //     // eslint-disable-next-line max-len
+    //     title: `Our Lawyer Made Us Change The Name Of This Song So We Wouldn't Get Sued`,
+    //     author: 'Fall Out Boy',
+    //     bpm: 160,
+    //     timeSignature: TimeSignature.FourQuarters
+    // },
+    {
+        title: 'Is This It',
+        author: 'The Strokes',
+        bpm: 96,
+        timeSignature: TimeSignature.FourQuarters
+    },
+    {
+        title: 'Undone - The Sweater Song',
+        author: 'Weezer',
+        bpm: 80,
         timeSignature: TimeSignature.FourQuarters
     },
     {
