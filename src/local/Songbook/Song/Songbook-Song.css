@@ -5,7 +5,6 @@
     align-items: center;
     /* background: red; */
     padding: var(--space-xs) 0;
-    /* border-bottom: 1px solid var(--color-test-4); */
     border-bottom: 1px solid var(--test-2);
 }
 

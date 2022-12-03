@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     /* background: var(--color-level-1); */
-    /* background: var(--color-test-2); */
     background-color: var(--test-1);
     padding: var(--space-s) var(--space-2-xl);
     color: var(--font);
