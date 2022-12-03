@@ -6,5 +6,5 @@
 }
 
 .Popup-Item:hover {
-    background: var(--color-test-1);
+    background: var(--background-color);
 }

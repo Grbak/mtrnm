@@ -9,12 +9,13 @@
   --button-view-clear-typo-color-base: #fff;
   --button-view-default-typo-color-base: #fff;
   --button-view-default-typo-color-hovered: #fff;
-  --button-view-clear-typo-color-base: red;
+  --button-view-clear-typo-color-base: var(--font);
   /* --button-view-action-fill-color-hovered: var(--color-level-2); */
-  --popup-view-default-fill-color: red;
+  --popup-view-default-fill-color: var(--test-1);
+  --popup-view-default-typo-color: var(--font);
   /* --textinput-view-default-fill-color-base: rgb(97, 93, 93); */
   /* --textinput-view-default-fill-color-base: rgb(68, 64, 64); */
-    --textinput-view-default-fill-color-base: transparent;
+  --textinput-view-default-fill-color-base: transparent;
   --textinput-view-default-fill-color-hovered: transparent;
   --textinput-view-default-border-color-base: rgba(255, 255, 255, 0.1);
   --textinput-view-default-border-color-hovered: red;

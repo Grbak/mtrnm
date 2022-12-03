@@ -51,6 +51,7 @@ export const Widget: FC<WidgetProps> = ({
 }) => {
     const [showPopup, setShowPopup] = useState(false);
     const anchor = useRef(null);
+    const rootRef = useRef(null);
     const { t } = useTranslation();
 
     const handlePopupOpen = useCallback(() => {
@@ -81,6 +82,7 @@ export const Widget: FC<WidgetProps> = ({
         <div
             className={cnWidget({ draggable, blurred }, [className])}
             onMouseDown={onMouseDown}
+            ref={rootRef}
         >
             {closed ? (
                 <Plug
@@ -121,6 +123,7 @@ export const Widget: FC<WidgetProps> = ({
                                 anchor={anchor}
                                 direction="bottom-end"
                                 items={popupItems}
+                                scope={rootRef}
                             />
                         </div>
                     </div>

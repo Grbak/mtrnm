@@ -9,13 +9,13 @@
 }
 
 .IconButton:hover {
-    background-color: var(--color-test-1);
+    background-color: var(--background-color);
 }
 
 .IconButton_pressed {
     transform: scale(0.9);
     transform-origin: center;
-    background-color: var(--color-test-1);
+    background-color: var(--background-color);
 }
 
 .IconButton_size_m {

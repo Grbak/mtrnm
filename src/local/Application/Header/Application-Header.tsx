@@ -28,6 +28,7 @@ export const ApplicationHeader: FC = observer(() => {
     const themeStore = useThemeStore();
     const [showLangPopup, setShowLangPopup] = useState(false);
     const langAnchor = useRef();
+    const addonRef = useRef(null);
     const { t, i18n } = useTranslation();
 
     const openLangPopup = useCallback(() => {
@@ -61,7 +62,7 @@ export const ApplicationHeader: FC = observer(() => {
     return (
         <div className={cnApplicationHeader()}>
             mtrnm
-            <div className={cnApplicationHeaderAddon()}>
+            <div className={cnApplicationHeaderAddon()} ref={addonRef}>
                 <Tumbler
                     checked={themeStore.theme === Theme.Dark}
                     onChange={themeStore.toggleTheme}
@@ -81,6 +82,7 @@ export const ApplicationHeader: FC = observer(() => {
                     onClose={closeLangPopup}
                     anchor={langAnchor}
                     items={langItems}
+                    scope={addonRef}
                 />
                 {/* <Button view="default" size="m">
                     {t('Log out')}

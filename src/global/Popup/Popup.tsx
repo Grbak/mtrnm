@@ -20,7 +20,7 @@ type PopupItem = PopupItemProps;
 
 type PopupProps = Pick<
     IPopupProps,
-    'visible' | 'onClose' | 'className' | 'direction'
+    'visible' | 'onClose' | 'className' | 'direction' | 'scope'
 > &
     Pick<IPopupTargetAnchorProps, 'anchor'> & {
         items: PopupItem[];
@@ -32,7 +32,8 @@ export const Popup: FC<PopupProps> = ({
     anchor,
     className,
     direction,
-    items
+    items,
+    scope
 }) => {
     return (
         <BasePopup
@@ -45,6 +46,7 @@ export const Popup: FC<PopupProps> = ({
             keepMounted={false}
             direction={direction}
             mainOffset={12}
+            scope={scope}
         >
             {items.map((item: PopupItem) => (
                 <Item
